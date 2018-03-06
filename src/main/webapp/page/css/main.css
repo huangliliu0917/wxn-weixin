@@ -1,0 +1,19 @@
+button.buttonRed{
+     width: 100px;
+     height: 30px;
+     font-size: 10px;
+     letter-spacing: 8px;
+     padding-left: 12px;
+     border-radius: 15px;
+     background-color:#ff9900;
+ }
+button.buttonOlivedrab{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    letter-spacing: 8px;
+    padding-left: 12px;
+    border-radius: 15px;
+    background-color:olivedrab;
+}
+
