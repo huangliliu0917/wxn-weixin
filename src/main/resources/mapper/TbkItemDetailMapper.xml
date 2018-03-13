@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxn.weixin.dal.mapper.TbkItemDetailMapper">
+    <resultMap id="BaseResultMap" type="com.wxn.weixin.dal.model.TbkItemDetailDO">
+        <result column="ITEM_ID" jdbcType="VARCHAR" property="itemId" />
+        <result column="TITLE" jdbcType="VARCHAR" property="title" />
+        <result column="PICT_URL" jdbcType="VARCHAR" property="pictUrl" />
+        <result column="SMALL_IMAGES" jdbcType="VARCHAR" property="smallImages" />
+        <result column="RESERVE_PRICE" jdbcType="VARCHAR" property="reservePrice" />
+        <result column="ZK_FINAL_PRICE" jdbcType="VARCHAR" property="zkFinalPrice" />
+        <result column="USER_TYPE" jdbcType="DECIMAL" property="userType" />
+        <result column="PROVCITY" jdbcType="VARCHAR" property="provcity" />
+        <result column="ITEM_URL" jdbcType="VARCHAR" property="itemUrl" />
+        <result column="NICK" jdbcType="VARCHAR" property="nick" />
+        <result column="SELLER_ID" jdbcType="VARCHAR" property="sellerId" />
+        <result column="VOLUME" jdbcType="DECIMAL" property="volume" />
+        <result column="CAT_LEAF_NAME" jdbcType="VARCHAR" property="catLeftName" />
+        <result column="CAT_NAME" jdbcType="VARCHAR" property="catName" />
+        <result column="SCLICK" jdbcType="VARCHAR" property="sclick" />
+        <result column="CODE_DATE" jdbcType="VARCHAR" property="codeDate" />
+        <result column="TAO_TOKEN" jdbcType="VARCHAR" property="taoToken" />
+        <result column="SHORT_LINK_URL" jdbcType="VARCHAR" property="shortLinkUrl" />
+        <result column="IS_CODE" jdbcType="VARCHAR" property="isCode" />
+    </resultMap>
+
+    <!--根据商品itemId,查询商品详情-->
+    <select id="getItemDetail" parameterType="com.wxn.weixin.dal.model.TbkItemDetailDO" resultMap="BaseResultMap">
+        SELECT
+          ITEM_ID,
+          TITLE,
+          PICT_URL,
+          SMALL_IMAGES,
+          ZK_FINAL_PRICE,
+          VOLUME,
+          TAO_TOKEN,
+          SHORT_LINK_URL
+          from t_tbk_item_detail t
+        where t.IS_CODE = '1'
+        <if test="itemId != null and itemId != ''">
+            and  t.ITEM_ID = #{itemId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+</mapper>

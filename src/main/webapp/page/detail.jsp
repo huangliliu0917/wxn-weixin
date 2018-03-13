@@ -27,16 +27,16 @@
 		</div>
 		<div class="h50"></div>
 		<div class="banner" style="margin: 5px 10px 10px;">
-			<img src="${tbkCoupon.pictUrl}" />
+			<img src="${tbkitemdetail.pictUrl}" />
 		</div>
 		<div class="detail" style="margin-top:2px;">
-			<p style="color: rgb(24, 24, 24); line-height: 0.5rem; text-indent: 0.24rem; font-size: 15px;color:#282828;">${tbkCoupon.title}</p>
+			<p style="color: rgb(24, 24, 24); line-height: 0.5rem; text-indent: 0.24rem; font-size: 15px;color:#282828;">${tbkitemdetail.title}</p>
 		</div>
 		<div class="detail-content" style="margin-bottom:5px;margin-top:5px;">
 			<p style="text-indent: .24rem; color: #666; line-height: .5rem;font-size: 15px;color:#FFCC33;">【淘口令购买】长按框内 > 全选 > 复制</p>
 		</div>
         <div class="detail-content" style="border: dashed 1px #FF0000;margin-right:15px;margin-left:15px; margin-bottom:8px;margin-top:5px;">
-            <p id="tbkText" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${tbkCode}</p>
+            <p id="tbkText" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${tbkitemdetail.taoToken}</p>
         </div>
 		<div class="detail-content" style="margin-right:100px;margin-left:110px; margin-bottom:2px;margin-top:5px;">
 			<button id="updateText" class="buttonRed" onclick="cp(document.getElementById('tbkText'))">一键复制</button>
@@ -62,12 +62,12 @@
 			<span class="text">更多同款商品</span>
 		</div>
 		<ul class="salse">
-			<c:if test="${not empty tbkCouponList}">
-				<c:forEach items="${tbkCouponList}" var="item" varStatus="tbkCouponList">
+			<c:if test="${not empty tbkItems}">
+				<c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
 					<li>
-						<a href="${actionPath}/manage/detail?title=${item.title}&couponClickUrl=${item.couponClickUrl}&smallImages=${item.smallImages}&pictUrl=${item.pictUrl}">
+						<a href="${actionPath}/manage/detail?">
 							<img src="${item.pictUrl}" />
-							<h2>${item.itemDescription}</h2>
+							<h2>${item.title}</h2>
 							<div class="infor">
 								<em size="1">券后:${item.zkFinalPrice}</em>
 								<em size="1">已售:${item.volume}</em>
@@ -87,7 +87,7 @@
 			</li>
 
 			<li>
-				<a href="#">
+				<a href="${tbkitemdetail.shortLinkUrl}">
 					<img src="${contextPath}/images/member.jpg" />
 					<p>淘口令购买</p>
 				</a>

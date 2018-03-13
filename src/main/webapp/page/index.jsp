@@ -23,7 +23,7 @@
 <div class="header">
 	<a href="index.jsp" class="logo"><img src="${contextPath}/images/logo.jpg"/></a>
 	<div class="search">
-		<input  type="search" name="couponName" id="queryCoupons" placeholder="请输入您需要的商品" />
+		<input  type="search" name="title" id="title" placeholder="请输入您需要的商品" />
 		<a href="${actionPath}/manage/queryTbkCoupon.do"><img src="${contextPath}/images/search.jpg"/></a>
 	</div>
 	<a href="/manage/queryTbkCoupons.do" class="sao">
@@ -37,27 +37,27 @@
 </div>
 <ul class="nav">
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=1">
 			<img src="${contextPath}/images/icon.jpg" />
 			<p>全网购</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=2">
 			<img src="${contextPath}/images/sale.jpg" />
 			<p>9.9专区</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=3">
 			<img src="${contextPath}/images/icon2.jpg" />
 			<p>小编力推</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=4">
 			<img src="${contextPath}/images/icon1.jpg" />
-			<p>居家日用</p>
+			<p>今日上新</p>
 		</a>
 	</li>
 </ul>
@@ -65,12 +65,12 @@
 	<span class="text">精品推荐</span>
 </div>
 <ul class="salse" id="indexUl">
-	<c:if test="${not empty tbkCoupon}">
-		<c:forEach items="${tbkCoupon}" var="item" varStatus="tbkCoupon">
+	<c:if test="${not empty tbkItems}">
+		<c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
 			<li>
-				<a href="${actionPath}/manage/detail?title=${item.title}&couponClickUrl=${item.couponClickUrl}&smallImages=${item.smallImages}&pictUrl=${item.pictUrl}">
+				<a href="${actionPath}/manage/tbkItemDetail.do?itemId=${item.itemId}">
 					<img src="${item.pictUrl}" />
-					<h2>${item.itemDescription}</h2>
+					<h2>${item.title}</h2>
 					<div class="infor">
 						<em size="1">券后:${item.zkFinalPrice}</em>
 						<span size="1">已售:${item.volume}</span>
@@ -86,19 +86,19 @@
 <div class="h50"></div>
 <ul class="footer">
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItems.do">
 			<img src="${contextPath}/images/index.jpg" />
 			<p>首页</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=2">
 			<img src="${contextPath}/images/red99.jpg" />
 			<p>9.9专区</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkCoupon.do">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?operType=3">
 			<img src="${contextPath}/images/icon4.jpg" />
 			<p>人气榜</p>
 		</a>
@@ -113,28 +113,29 @@
 </body>
 <script type="text/javascript">
     var pageNo=2;
+    var pageSize=10;
     var domain = "http://"+window.location.host;
 
     //绑定手机搜索按钮
-    $('#queryCoupons').bind('search', function () {
-        var couponName = document.getElementById("queryCoupons").value;
-        window.location.href=domain+"/manage/queryTbkCoupons.do?couponName="+couponName+"&pageNo=1";
+    $('#title').bind('search', function () {
+        var title = document.getElementById("title").value;
+        window.location.href=domain+"/manage/tbkItems.do?title="+title+"&pageNo="+pageNo+"&pageSize="+pageSize;
 	});
 
 
     function loadMoerCoupon() {
         $.ajax({
-            url:""+"/manage/loadMoreCoupon.do",
+            url:""+"/manage/loadMoreItems.do",
             async:false,
-            data: {'pageNo':pageNo},
+            data: {'pageNo':pageNo,'pageSize':pageSize},
             dataType:'json',
             type:"post",
             success:function(data){
                 $.each(data,function(index,item){
                     var createLi = document.createElement("li");
-					createLi.innerHTML+="<a href="+domain+"/manage/detail?title="+item.title+"&couponClickUrl="+item.couponClickUrl+"&smallImages="+item.smallImages+"&pictUrl="+item.pictUrl+">\n" +
+					createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.itemId+">\n" +
                         "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
-                        "\t\t\t\t\t<h2>"+item.itemDescription+"</h2>\n" +
+                        "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
                         "\t\t\t\t\t<div class='infor'>\n" +
                         "\t\t\t\t\t\t<em size='1\'>券后:"+item.zkFinalPrice+"</em>\n" +
                         "\t\t\t\t\t\t<span size='1'>已售:"+item.volume+"</span>\n" +

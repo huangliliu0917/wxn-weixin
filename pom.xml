@@ -10,7 +10,64 @@
     <artifactId>wxn-weixin</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <runtime.version>1.8</runtime.version>
+        <maven-compiler.version>3.1</maven-compiler.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <mybatis-paginator.version>4.1.6</mybatis-paginator.version>
+        <org.mybatis.version>3.2.1</org.mybatis.version>
+        <org.mybatis.spring.version>1.2.0</org.mybatis.spring.version>
+        <commons.dbcp.version>1.4</commons.dbcp.version>
+        <mysql.version>5.1.29</mysql.version>
+        <lombok.version>1.16.8</lombok.version>
+        <cglib.version>2.2.2</cglib.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <slf4j.api>1.7.5</slf4j.api>
+        <logback>1.0.13</logback>
+        <selenium>1.0</selenium>
+        <taobao>1.0</taobao>
+    </properties>
+
     <dependencies>
+        <!-- cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${org.mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${org.mybatis.spring.version}</version>
+        </dependency>
+        <!-- mysql驱动包 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!--mybatis分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${mybatis-paginator.version}</version>
+        </dependency>
+        <!-- dbcp -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons.dbcp.version}</version>
+        </dependency>
+
+        <!--###############################################################################-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

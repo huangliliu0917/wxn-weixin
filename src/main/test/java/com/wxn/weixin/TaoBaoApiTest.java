@@ -105,7 +105,7 @@ public class TaoBaoApiTest {
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
         req.setText("长度大于5个字符");
-        req.setUrl("https://uland.taobao.com/coupon/edetail?e=hJxDmk%2Baq5kN%2BoQUE6FNzBU24xMzptA5lVwGZiJA87mPg5kJnJt9jUDSR7Uyp%2Bzrsb7ect6dMGs5rczJ8gFS5hpywujSvOp2nUIklpPPqYL5hx%2FdjuGLwSO0u1i25npM9HD4y%2BNDf4VGSnRwVkJlLxHmSnYGT2pW&af=1&pid=mm_120912411_42970707_272988181");
+        req.setUrl("https://s.click.taobao.com/bpKbFTw");
         req.setLogo("https://uland.taobao.com/");
         TbkTpwdCreateResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
@@ -122,9 +122,8 @@ public class TaoBaoApiTest {
         TbkItemInfoGetRequest req = new TbkItemInfoGetRequest();
         req.setFields("num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url");
        //req.setPlatform(2L);
-        req.setNumIids("562438279771");
+        req.setNumIids("562533629533");
         TbkItemInfoGetResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
     }
-
 }

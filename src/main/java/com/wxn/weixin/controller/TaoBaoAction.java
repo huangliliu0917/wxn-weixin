@@ -3,6 +3,8 @@ package com.wxn.weixin.controller;
 import com.alibaba.fastjson.JSON;
 import com.taobao.api.ApiException;
 import com.taobao.api.response.TbkDgItemCouponGetResponse;
+import com.wxn.weixin.dal.model.TbkItemDO;
+import com.wxn.weixin.dal.model.TbkItemDetailDO;
 import com.wxn.weixin.manager.TaoBaoManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,88 @@ public class TaoBaoAction extends BaseAction{
 
     @Autowired
     private TaoBaoManager taoBaoManager;
+
+    /**
+     * 查询商品列表
+     * @param model
+     * @return
+     */
+    @RequestMapping("/manage/tbkItems.do")
+    public String getItems(Model model,TbkItemDO tbkItemDO){
+        try {
+            log.info("查询商品列表,tbkItem{}",tbkItemDO.toString());
+            List<TbkItemDO> tbkItems = taoBaoManager.getItems(tbkItemDO );
+            model.addAttribute("tbkItems",tbkItems);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+        }
+        return "page/index";
+    }
+
+    @RequestMapping("/manage/tbkItemDetail.do")
+    public String getTbkItemDetail(Model model,TbkItemDetailDO tbkItemDetailDO){
+        log.info("获取商品详情,tbkItemDetail{}",tbkItemDetailDO.toString());
+        try {
+            TbkItemDetailDO tbkItemDetail = taoBaoManager.getTbkItemDetail(tbkItemDetailDO);
+            //查找相似产品
+            List<TbkItemDO> tbkItems = taoBaoManager.getSimilarityItems(tbkItemDetail);
+
+            String[] imgs = tbkItemDetail.getSmallImages().split(",");
+            model.addAttribute("tbkitemdetail",tbkItemDetail);
+            model.addAttribute("tbkItems",tbkItems);
+            model.addAttribute("imgs",imgs);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+        }
+        return "page/detail";
+    }
+
+    /**
+     * 通过点击图标，查询相应商品列表
+     * @param model
+     * @return
+     */
+    @RequestMapping("/manage/tbkItemsByImg.do")
+    public String getItemsByImg(Model model,TbkItemDO tbkItemDO){
+        try {
+            log.info("通过点击图标，查询相应商品列表,tbkItem{}",tbkItemDO.toString());
+            List<TbkItemDO> tbkItems = taoBaoManager.getItems(tbkItemDO);
+            model.addAttribute("tbkItems",tbkItems);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+        }
+        return "page/ToTbkItems";
+    }
+
+    /**
+     * 加载更多商品
+     * @param model
+     * @param tbkItemDO
+     * @param response
+     * @throws ApiException
+     */
+    @RequestMapping(value="/manage/loadMoreItems.do")
+    public void loadMoreCoupon(ModelMap model,TbkItemDO tbkItemDO, HttpServletResponse response)throws ApiException{
+        log.info("加载更多商品,tbkItem{}",tbkItemDO.toString());
+        List<TbkItemDO> tbkItems = taoBaoManager.getItems(tbkItemDO );
+        System.out.println(JSON.toJSONString(tbkItems));
+        sendMessages(response, JSON.toJSONString(tbkItems));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * taobao.tbk.dg.item.coupon.get (好券清单API【导购】)
      * @param model
@@ -94,16 +177,8 @@ public class TaoBaoAction extends BaseAction{
         } catch (ApiException e) {
             e.printStackTrace();
         }
-        return "page/queryTbkCoupon";
+        return "page/ToTbkItems";
     }
-
-    @RequestMapping(value="/manage/loadMoreCoupon.do")
-    public void loadMoreCoupon(HttpSession session, ModelMap model,Long pageNo, HttpServletResponse response)throws ApiException{
-        List<TbkDgItemCouponGetResponse.TbkCoupon> tbkCoupons = taoBaoManager.loadMoreCoupon(url,appkey,secret,pageNo);
-        System.out.println(JSON.toJSONString(tbkCoupons));
-        sendMessages(response, JSON.toJSONString(tbkCoupons));
-    }
-
 
 }
 
