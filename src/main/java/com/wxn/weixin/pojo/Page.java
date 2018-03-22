@@ -2,7 +2,7 @@ package com.wxn.weixin.pojo;
 
 public class Page {
     private int pageNo=1;
-    private int pageSize=10;
+    private int pageSize=30;
 
     public int getPageNo() {
         return pageNo;

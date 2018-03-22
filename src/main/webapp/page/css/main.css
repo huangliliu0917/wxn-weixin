@@ -16,4 +16,20 @@ button.buttonOlivedrab{
     border-radius: 15px;
     background-color:olivedrab;
 }
+button.modelButtonRed{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    letter-spacing: 8px;
+    border-radius: 15px;
+    background-color:#ff9900;
+}
+button.modelButtonOlivedrab{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    letter-spacing: 8px;
+    border-radius: 15px;
+    background-color:olivedrab;
+}
 

@@ -17,6 +17,7 @@
         <result column="RATE_TYPE" jdbcType="VARCHAR" property="rateType" />
         <result column="IS_CODE" jdbcType="VARCHAR" property="isCode" />
         <result column="IS_SHOW" jdbcType="VARCHAR" property="isShow" />
+        <result column="ITEM_TYPE" jdbcType="VARCHAR" property="itemType" />
     </resultMap>
 
     <select id="getItems" parameterType="com.wxn.weixin.dal.model.TbkItemDO" resultMap="BaseResultMap">
@@ -25,11 +26,15 @@
           TITLE,
           PICT_URL,
           ZK_FINAL_PRICE,
-          VOLUME
+          VOLUME,
+          ITEM_TYPE
       from t_tbk_item t
-        where t.IS_SHOW = '1'
+        where 1=1
         <if test="title != null and title != ''">
             and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="itemType != null and itemType != ''">
+            and  t.ITEM_TYPE = #{itemType,jdbcType=VARCHAR}
         </if>
     </select>
 </mapper>

@@ -1,0 +1,44 @@
+.salser{
+	display: none;
+}
+.salser li{
+	border-bottom: 1px solid #f1f1f1;
+	height: 2rem;
+}
+.salser img{
+	display: inline-block;
+	float: left;
+	width:30%;
+	max-height: 1.9rem;
+}
+.sale-r{
+	width:70%;
+	float: right;
+	margin-top: 0.3rem;
+}
+.sale-r h2{
+	font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+.new-price{
+	font-size: 0.3rem;
+    color: #ff5027;
+}
+.old-price{
+	text-decoration: line-through;
+    font-size: 0.2rem;
+    color: #bdbdbd;
+    display: inline-block;
+    margin-left: 3px;
+}
+.sale-num{
+	float: right;
+    color: #7b7b7b;
+    margin-right: 5px;
+    font-size: 0.2rem;
+}
+.menu{
+	text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+}

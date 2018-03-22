@@ -20,11 +20,11 @@ input,textarea{-webkit-appearance:none;}
 .header .sao img{ width: .5rem; margin-top: .23rem;}
 .h50{ height: 1rem;}
 .banner img{ width: 100%;}
-.nav{ overflow: hidden; margin: .2rem 0;}
-.nav li{ float: left; width: 25%; text-align: center;}
-.nav li img{ width: 70%;}
+.nav{ overflow: hidden; margin: .5rem 0;}
+.nav li{ float: left; width: 20%; text-align: center;}
+.nav li img{ width: 50%;}
 .nav li a{ color: #333;}
-.nav li p{ line-height: .5rem;}
+.nav li p{text-align: center; color: #666; line-height: 0.8rem;}
 .title{ border-bottom: 1px solid #ec1d25;  overflow: hidden; line-height: .6rem;}
 .title .text{ float: left; color: #666; padding-left: 4%; font-size: .3rem; }
 .title .text i{ float: left; color: #666;  color:#ff3334; font-size: .32rem;  font-weight: bold; margin-right: .15rem;}
@@ -41,11 +41,11 @@ input,textarea{-webkit-appearance:none;}
 .scroll .infor{ overflow: hidden; padding: 0 .1rem  .2rem .1rem;}
 .scroll .infor span{ color: #cd0000; font-weight:bold; display: block; float: left;line-height: .35rem;}
 .scroll .infor button{ background: #ff3336; color: #fff; border: 0; float:right; line-height: .35rem;}
-.salse{ overflow: hidden; margin:1%;}
+.salse{margin:1%;}
 .salse li{ width: 48%; margin-right: .05rem; border: 1px solid #ddd;float: left; margin-bottom: .05rem;}
 .salse li:nth-child(even){  margin-right: 0;float: right; }
 .salse li img{width: 99%; margin: 0 auto; display: block;}
-.salse li h2{ font-size: .28rem; color: #858585; padding: 0 .1rem; overflow: hidden; height: .8rem; line-height: .4rem; margin-bottom: .1rem;}
+.salse li h2{ font-size: .28rem; color: #858585; padding: 0 .1rem; overflow: hidden;line-height: .4rem; margin-bottom: .1rem;height: 26px;}
 .salse li a{ display: block;}
 .salse .infor{ overflow: hidden; padding: 0 .1rem .2rem .1rem; font-size: .28rem;}
 .salse .infor span{ color: #666; display: block; float: right;line-height: .3rem;}

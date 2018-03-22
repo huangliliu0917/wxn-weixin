@@ -45,6 +45,12 @@ public class TaoBaoAction extends BaseAction{
         return "page/index";
     }
 
+    /**
+     * 查询商品详情
+     * @param model
+     * @param tbkItemDetailDO
+     * @return
+     */
     @RequestMapping("/manage/tbkItemDetail.do")
     public String getTbkItemDetail(Model model,TbkItemDetailDO tbkItemDetailDO){
         log.info("获取商品详情,tbkItemDetail{}",tbkItemDetailDO.toString());
@@ -74,10 +80,21 @@ public class TaoBaoAction extends BaseAction{
             log.info("通过点击图标，查询相应商品列表,tbkItem{}",tbkItemDO.toString());
             List<TbkItemDO> tbkItems = taoBaoManager.getItems(tbkItemDO);
             model.addAttribute("tbkItems",tbkItems);
+            model.addAttribute("tbkItem",tbkItemDO);
         } catch (Exception e) {
             log.error(e.getMessage(),e);
         }
-        return "page/ToTbkItems";
+        return "page/itemList";
+    }
+
+    /**
+     * 超级搜索
+     * @param model
+     * @return
+     */
+    @RequestMapping("/manage/superQuery.do")
+    public String superQuery(Model model){
+        return "page/superQuery";
     }
 
     /**

@@ -6,18 +6,91 @@
 <head>
 	<meta charset="utf-8" />
 	<title>美宁欢乐淘</title>
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="description" content="美宁欢乐淘" />
-	<meta name="keywords" content="美宁欢乐淘" />
 	<link rel="stylesheet" href="${contextPath}/css/style.css" type="text/css" />
-	<script src="${contextPath}/js/jquery-1.3.2.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="${contextPath}/css/main.css" type="text/css" media="screen" charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+	<title>加载底部</title>
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<link rel="stylesheet" href="../page/css/dropload.css">
 	<script type="text/javascript">
         !function(J){function H(){var d=E.getBoundingClientRect().width;var e=(d/7.5>100*B?100*B:(d/7.5<42?42:d/7.5));E.style.fontSize=e+"px",J.rem=e}var G,F=J.document,E=F.documentElement,D=F.querySelector('meta[name="viewport"]'),B=0,A=0;if(D){var y=D.getAttribute("content").match(/initial\-scale=([\d\.]+)/);y&&(A=parseFloat(y[1]),B=parseInt(1/A))}if(!B&&!A){var u=(J.navigator.appVersion.match(/android/gi),J.navigator.appVersion.match(/iphone/gi)),t=J.devicePixelRatio;B=u?t>=3&&(!B||B>=3)?3:t>=2&&(!B||B>=2)?2:1:1,A=1/B}if(E.setAttribute("data-dpr",B),!D){if(D=F.createElement("meta"),D.setAttribute("name","viewport"),D.setAttribute("content","initial-scale="+A+", maximum-scale="+A+", minimum-scale="+A+", user-scalable=no"),E.firstElementChild){E.firstElementChild.appendChild(D)}else{var s=F.createElement("div");s.appendChild(D),F.write(s.innerHTML)}}J.addEventListener("resize",function(){clearTimeout(G),G=setTimeout(H,300)},!1),J.addEventListener("pageshow",function(b){b.persisted&&(clearTimeout(G),G=setTimeout(H,300))},!1),H()}(window);
         if (typeof(M) == 'undefined' || !M){
             window.M = {};
         }
 	</script>
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			-webkit-text-size-adjust:none;
+		}
+		.flush{
+			max-width: 640px;
+			margin: 0 auto;
+			background-color: #fff;
+		}
+		.flush .item img{
+			display: block;
+			width: 40px;
+			height: 40px;
+			border:1px solid #ddd;
+		}
+		.flush .item h3{
+			display: block;
+			-webkit-box-flex: 1;
+			-webkit-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			width: 100%;
+			max-height: 40px;
+			overflow: hidden;
+			line-height: 20px;
+			margin: 0 10px;
+			font-size: 1.2rem;
+		}
+		@-webkit-keyframes opacity {
+			0% {
+				opacity:0;
+			}
+			100% {
+				opacity:1;
+			}
+		}
+		@keyframes opacity {
+			0% {
+				opacity:0;
+			}
+			100% {
+				opacity:1;
+			}
+		}
+		.catfooter{
+			margin-top: 0px;
+			background-color: #fff;
+		}
+		.catfooter li{
+			background-color: #fff;
+			float: left;
+			list-style: none;
+			width: 25%;
+			display: inline;}
+		.catfooter a {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			height: 38px;
+			line-height: 38px;
+			text-align: center;
+			font-size: 14px;
+			text-decoration: none;
+			color: #2a2a2a;
+		}
+        .salse li h2{ font-size: .30rem; color: #858585; height: 18px;padding: 0 .1rem; overflow: hidden;line-height: .4rem; margin-bottom: .1rem;}
+    </style>
 </head>
 <body>
 <div class="header">
@@ -31,7 +104,23 @@
 		<p>查询</p>
 	</a>
 </div>
-<div class="h50"></div>
+<div class="catfooter">
+	<ul>
+		<li onclick="topck('top_moren');" id="topmoren">
+			<a href="javascript:">综合</a>
+		</li>
+		<li  onclick="topck('top_ishot');" id="topishot">
+			<a href="javascript:">销量</a>
+		</li>
+		<li onclick="topck('top_ishit');" id="topishit">
+			<a href="javascript:">优惠</a>
+		</li>
+		<li onclick="topck('top_isfee');" id="topisfee">
+			<a href="javascript:">价格</a>
+		</li>
+	</ul>
+</div>
+
 <ul class="salse" id="indexUl">
 	<c:if test="${not empty tbkItems}">
 		<c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
@@ -48,9 +137,7 @@
 		</c:forEach>
 	</c:if>
 </ul>
-<div style="text-align: center;margin-top: 2px; margin-bottom: 10px;">
-	<button id="loadMoerItem" class="buttonRed" onclick="loadMoerCoupon()">点击获取更多商品</button>
-</div>
+<div class="flush"></div>
 <div class="h50"></div>
 <ul class="footer">
 	<li>
@@ -78,35 +165,63 @@
 		</a>
 	</li>
 </ul>
-</body>
-<script type="text/javascript">
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="../page/js/jquery.min.js"></script>
+<script src="../page/js/dropload.js"></script>
+<script>
     var pageNo=2;
-    var pageSize=10;
+    var pageSize=50;
     var domain = "http://"+window.location.host;
 
-    function loadMoerCoupon() {
-        $.ajax({
-            url:""+"/manage/loadMoreItems.do",
-            async:false,
-            data: {'pageNo':pageNo,'pageSize':pageSize},
-            dataType:'json',
-            type:"post",
-            success:function(data){
-                $.each(data,function(index,item){
-                    var createLi = document.createElement("li");
-                    createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.itemId+">\n" +
-                        "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
-                        "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
-                        "\t\t\t\t\t<div class='infor'>\n" +
-                        "\t\t\t\t\t\t<em size='1\'>券后:"+item.zkFinalPrice+"</em>\n" +
-                        "\t\t\t\t\t\t<span size='1'>已售:"+item.volume+"</span>\n" +
-                        "\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t</a>"
-                    document.getElementById("indexUl").appendChild(createLi);
+    //绑定手机搜索按钮
+    $('#title').bind('search', function () {
+        var title = document.getElementById("title").value;
+        window.location.href=domain+"/manage/tbkItems.do?title="+title+"&pageNo="+pageNo+"&pageSize="+pageSize;
+    });
+
+    $(function(){
+        // dropload
+        $('.flush').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                pageNo++;
+                $.ajax({
+                    url:""+"/manage/loadMoreItems.do",
+                    async:false,
+                    data: {'pageNo':pageNo,'pageSize':pageSize},
+                    dataType:'json',
+                    type:"post",
+                    success:function(data){
+                        var arrLen = data.length;
+                        if(arrLen > 0){
+                            $.each(data,function(index,item){
+                                var createLi = document.createElement("li");
+                                createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.itemId+">\n" +
+                                    "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
+                                    "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
+                                    "\t\t\t\t\t<div class='infor'>\n" +
+                                    "\t\t\t\t\t\t<em size='1\'>券后:"+item.zkFinalPrice+"</em>\n" +
+                                    "\t\t\t\t\t\t<span size='1'>已售:"+item.volume+"</span>\n" +
+                                    "\t\t\t\t\t</div>\n" +
+                                    "\t\t\t\t</a>"
+                                document.getElementById("indexUl").appendChild(createLi);
+                            });
+                        }else{
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                        }
+                        me.resetload();
+                    },
+                    error: function(xhr, type){
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                    }
                 });
             }
-        })
-        pageNo++;
-    }
+        });
+    });
 </script>
+</body>
 </html>

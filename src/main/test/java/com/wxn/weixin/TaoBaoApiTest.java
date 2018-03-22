@@ -126,4 +126,21 @@ public class TaoBaoApiTest {
         TbkItemInfoGetResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
     }
+
+    /**
+     * 优惠券信息查询
+     * @throws ApiException
+     */
+    @Test
+    public void couponMessage()throws ApiException{
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TbkCouponGetRequest req = new TbkCouponGetRequest();
+        //req.setMe("nfr%2BYTo2k1PX18gaNN%2BIPkIG2PadNYbBnwEsv6mRavWieOoOE3L9OdmbDSSyHbGxBAXjHpLKvZbL1320ML%2BCF5FRtW7N7yJ056Lgym4X01A%3D");
+        req.setItemId(535962426659l);
+        //req.setActivityId("sdfwe3eefsdf");
+        TbkCouponGetResponse rsp = client.execute(req);
+        System.out.println(rsp.getBody());
+    }
+
+
 }

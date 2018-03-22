@@ -23,6 +23,42 @@ public class TbkItemDO extends Page {
     private String isCode;//1:有口令链接 2:无口令链接
     private String isShow;//1:展示 2:不展示
     private int operType;//1全网购 2,9.9专区 3小编力推 4今日上新
+    private String itemType;//1:女装 2:男装 3:内衣 4:母婴 5:化妆品 6:居家 7:鞋包 8:配饰 9:车品
+    private String typename;//排序类型
+    private String minfee;//最小价格
+    private String maxfee;//最高价格
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }
+
+    public String getMinfee() {
+        return minfee;
+    }
+
+    public void setMinfee(String minfee) {
+        this.minfee = minfee;
+    }
+
+    public String getMaxfee() {
+        return maxfee;
+    }
+
+    public void setMaxfee(String maxfee) {
+        this.maxfee = maxfee;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
 
     public int getOperType() {
         return operType;
