@@ -7,90 +7,53 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-<title>超级搜索 - 全网精选优惠券</title>
+<title>全网精选优惠券</title>
 
 <link rel="stylesheet" type="text/css" href="../page/superquery/amazeui.min.css"/>
 <link rel="stylesheet" type="text/css" href="../page/superquery/hl_style.css" />
-<script type="text/javascript" src="jquery.min.js"></script>
-<!--[if (gte IE 9)|!(IE)]><!-->
+<script type="text/javascript" src="../page/js/jquery.min.js"></script>
 <script type="text/javascript" src="../page/superquery/amazeui.min.js"></script>
-<!--<![endif]-->
-
-</head>
-
-<body>
-
-
-<div class="am-modal am-modal-alert" tabindex="-1" id="fq_alert">
-  <div class="am-modal-dialog">
-    <div class="am-modal-hd" id="fq_alert_title"></div>
-    <div class="am-modal-bd" id="fq_alert_info">
-    </div>
-    <div class="am-modal-footer">
-      <span class="am-modal-btn">确定</span>
-    </div>
-  </div>
-</div>
-
-<div class="am-modal am-modal-confirm" tabindex="-1" id="fq_confirm">
-  <div class="am-modal-dialog">
-    <div class="am-modal-hd" id="fq_confirm_title"></div>
-    <div class="am-modal-bd" id="fq_confirm_info"></div>
-    <div class="am-modal-footer">
-      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-    </div>
-  </div>
-</div>
-
-
-
 <script type="text/javascript" src="../page/superquery/clipboard.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../page/superquery/font_0cg36os498fzjjor.css">
-
 <!-- 微信自定义接口 -->
-<script src="jweixin-1.1.0.js"></script>
+<script src="../page/superquery/jweixin-1.1.0.js"></script>
 <script type="text/javascript">
     if(navigator.appName == 'Microsoft Internet Explorer'){
-		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
-			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
-		}
-	}
-	window.sysinfo = {
-		'uniacid': '4',		'acid': '4','openid': 'oBkOmv6ChJiWncgelJ19ccf1KrwU',				'siteroot': 'http://wx.sskk88.cn/',
-		'siteurl': 'http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbkquan&shopid=0&time=1521474913',
-		'attachurl': 'http://wx.sskk88.cn/attachment/',
-		'attachurl_local': 'http://wx.sskk88.cn/attachment/',
-		'attachurl_remote': '',
-		'MODULE_URL': 'http://wx.sskk88.cn/addons/bsht_tbkquan/',		'cookie' : {'pre': '2d72_'}
-	};
-	// jssdk config 对象
-	jssdkconfig = {"appId":"wx2197a8ff9847ca8a","nonceStr":"RL9K5K7XI3AL2KK5","timestamp":"1521474913","signature":"6aef242b3b3c405a3539d9842adfd6998de62ba4"} || {};
-	// 是否启用调试
-	jssdkconfig.debug = false;
-	jssdkconfig.jsApiList = [
-		'checkJsApi',
-		'onMenuShareTimeline',
-		'onMenuShareAppMessage',
-		'onMenuShareQQ',
-		'onMenuShareWeibo',
-		'hideMenuItems',
-		'showMenuItems',
-		'hideAllNonBaseMenuItem',
-		'showAllNonBaseMenuItem'
-	];
+        if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+            alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+        }
+    }
+    window.sysinfo = {
+        'uniacid': '4',		'acid': '4','openid': 'oBkOmv6ChJiWncgelJ19ccf1KrwU',				'siteroot': 'http://wx.sskk88.cn/',
+        'siteurl': 'http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbkquan&shopid=0&time=1521474913',
+        'attachurl': 'http://wx.sskk88.cn/attachment/',
+        'attachurl_local': 'http://wx.sskk88.cn/attachment/',
+        'attachurl_remote': '',
+        'MODULE_URL': 'http://wx.sskk88.cn/addons/bsht_tbkquan/',		'cookie' : {'pre': '2d72_'}
+    };
+    // jssdk config 对象
+    jssdkconfig = {"appId":"wx2197a8ff9847ca8a","nonceStr":"RL9K5K7XI3AL2KK5","timestamp":"1521474913","signature":"6aef242b3b3c405a3539d9842adfd6998de62ba4"} || {};
+    // 是否启用调试
+    jssdkconfig.debug = false;
+    jssdkconfig.jsApiList = [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem'
+    ];
 </script>
-<!-- 微信自定义接口 -->
-
 <style>
-
     header{
         position: relative;
     }
-
     header img{
         width: 100%;
     }
-
     header .am-form{
         position: absolute;
         bottom: 3rem;
@@ -98,7 +61,6 @@
         display: flex;
         justify-content: center;
     }
-
     header .am-form input[type=text]{
         background:#EEF0FF;
         width: 86%;
@@ -109,11 +71,9 @@
         height: 40px;
         font-size: 14px;
     }
-
     header .am-form input[type="text"]::-webkit-input-placeholder{
         color: #9295AC;
     }
-
     header .icon-icon{
         display: flex;
         align-items: center;
@@ -126,7 +86,6 @@
         height: 36px;
         line-height: 1.2;
     }
-
     .fq-searchbtn{
         display: flex;
         align-items: center;
@@ -141,21 +100,18 @@
         border-radius: 0 1000px 1000px 0;
         padding-right: 4px;
     }
-
     .fq-searchbtn:visited,
     .fq-searchbtn:hover,
     .fq-searchbtn:active,
     .fq-searchbtn:focus{
         color: white;
     }
-
     .fq-label{
         display: flex;
         justify-content:space-between;
         align-items:center;
         color: #4c4c4c;
     }
-
     .fq-hot-label{
         background: #F2F2F2;
         color: #6C6D76;
@@ -170,45 +126,37 @@
     .fq-recommend img{
         width: 100%;
     }
-
     .fq-coupon{
         color: white;
         background: #1fc46b;
         box-shadow: 0 0 4px rgba(41,203,110,0.36);
         padding: 0 4px;
         border-radius: 4px;
-        
-    }
 
+    }
     .fq-super-commend{
         background:#eee;
     }
-
     .fq-super-slider{
         border:none;
         box-shadow: none;
         margin-bottom:.5rem;
     }
-
     .fq-super-slider .am-control-nav{
         display: none;
     }
-
     .fq-super-slider .am-slides li{
         width: 150px!important;
     }
-
     .fq-super-slider .am-slides li a{
         display: block;
         width: 96%;
         background:#F6F6F6;
         border:5px;
     }
-
     .fq-super-slider .am-slides li a img{
         border:5px 5px 0 0;
     }
-
     .fq-super-messages{
         display: flex;
         justify-content: space-between;
@@ -216,11 +164,9 @@
         position: relative;
         border-radius:0 0 5px 5px;
     }
-
     .fq-super-slider .am-direction-nav .am-prev{
         left: -10px;
     }
-
     .fq-super-sale{
         position: absolute;
         top:-3rem;
@@ -232,313 +178,321 @@
         padding:2px 10px 2px 4px;
         line-height: 16px;
     }
-
-
 </style>
-
-<div class="fq-whole am-text-sm" style="max-width:540px;width:100%;max-width:540px;bottom:0px;left:0px;right:0px;margin:auto;">
-    <!--查询窗口-->
-    <header class="head am-text-center am-center">
-        <img src="../page/images/super_searchbg.png" />
-        <form action="./index.php" method="get" class="am-form" onSubmit="return search()" id="search-form">
-            <a class="iconfont icon-icon"></a>
-			<input type="hidden" name="c" value="entry" />
-			<input type="hidden" name="i" value="4" />
-        	<input type="hidden" name="m" value="bsht_tbkquan" />
-			<input type="hidden" name="itemid" value="" />
-			<input type="hidden" name="sid" value="" />
-			<input type="hidden" name="itemfee" value="" />
-			<input type="hidden" name="itempic" value="" />
-        	<input type="hidden" name="do" value="so" />
-			<input type="hidden" name="openid" value="" />
-			<input type="hidden" name="nb_shopid" value="0" />
-            <input id="itemurl" name="title" type="text" class="am-round" placeholder="搜索粘贴商品标题抢优惠券~" value="" autocomplete="off">
-			<style>
-.suggest.dropdown .dropdown-menu {
-    display: block;
-    width: 6.8rem;
-    margin-top: 0;
-    padding: 0px 0px 0px 10px;
-}
-.suggest.dropdown .dropdown-menu {
-    max-height: 330px;
-    box-shadow: 0 2px 4px 0 rgba(32,32,64,.16);
-}
-.dropdown .dropdown-menu {
-    border: 1px solid #d3d3db;
-    position: absolute;
-    top: 100%;
-    margin-top: 10px;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    min-width: 100%;
-    max-height: 330px;
-    font-size: .25rem;
-    text-align: left;
-    padding-left: 10px;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border-radius: 4px;
-    box-sizing: border-box;
-    overflow: auto;
-    -moz-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
-    box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
-}
-.dropdown .dropdown-menu, .table-container .scroll-fix .table {
-    -webkit-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
-    -ms-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
-    -o-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
-}
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-
-.highlight {
-    color: #f50;
-}
-
-.dropdown-menu a {
-    color: #666;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-}
-</style>
-<div class="suggest dropdown" style="display: none;top: 40px;left: 40px;z-index: 9998;width: 71%;position: absolute;">
-    <ul class="dropdown-menu" id="suggest">
-    </ul>
-</div>
-    <input type="hidden" name="shopid" value="0"/>
-         <a class="fq-searchbtn" id="clickurl">搜索</a>
-    </form>
-</header>
-<!--查询窗口-->
-<!--初始界面-->
-<!--交互界面-->
-<div class="fq-background-white am-margin-top-xs am-padding-sm am-hide" id="searching">
-  <div class="am-text-center"><i class="am-icon-spinner am-icon-spin"></i> 正在为您查询<span id="search_title"></span>的商品优惠券，请稍后......</div>
-</div>
-<!--交互界面-->
-<!--初始界面-->
-<div class="fq-super-commend" id="course">
-    <div class="fq-background-white am-margin-bottom-sm am-padding-sm">
-        <div class="fq-label am-margin-bottom-sm am-text-default">
-            <span>热门标签</span>
-            <span class="am-text-xs fq-super-replace change_tickets"><i class="am-icon-refresh am-margin-right-xs"></i>换一批</span>
-        </div>
-        <div class="tickets_content">
-        </div>
-    </div>
-        
-    <div class="fq-background-white am-padding-vertical-sm am-margin-bottom-sm am-padding-left-sm">
-        <div class="fq-label am-padding-bottom-sm am-text-default">
-            边看边买
-        </div>
-        <div class="fq-super-slider am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:160, itemMargin: 5,animationSpeed:400, slideshow: true,playAfterPaused: 6000}">
-            <ul class="am-slides">
-             <li>
-                 <a class="fq-super-goods am-text-left" href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=show_api&m=bsht_tbk&iid=525729431977&yj=2.684&tit=5rSX6KGj6KKL5oqk5rSX6KKL57uG572R5aWX6KOF5rSX6KGj5pyN5YaF6KGj5paH6IO455qE5rSX5oqk6KKL5aSn5Y_b35rSX6KGj5py65LiT55So572R6KKL&wenan=44CQ5aSn5Y_b3K_bS4reWPtyvlsI_alj7cr6L_b35L2g5Y_b377yMNOS7tuWll_bOAkeWKoOWOmumdouaWme_b8jOe7j_bS5heiAkOeUqO_b8jOmYsue8oOe7lemYsuWPmOW9ou_b8jOe7huiHtOe9kemdou_b8jOWRteaKpOS9oOeahOWunei0neiho_beJqe_b8jOaCqOeahOiho_beJqea0l_baKpOS4k_bWutu_b8jOWPpumAgeS4pOS4qua0l_biho_beQg_b_b8gQ_c_c&pic=http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg&fee1=11.80&fee2=8.80&qfee=3&fl=0&isdx=&shopid=0&isnb=1&maijia_id=105046306&isnice=2&stype=5&shopyuji=&hdk=1&actid=0cb8d2f129934786a2c671040f4a910b&vid=50069116160&q_yl=49050&q_zl=50000&qcid=10&istm=1">
-                    <img src="http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg_200x200.jpg" />
-                    <div class="fq-super-messages am-padding-xs">
-                        <span class="fq-super-sale am-text-xs">月销30002</span>
-                        <span class="am-text-xs" style="color:#F42B45">券后￥8.8</span>
-                        <span class="fq-coupon">3元券</span>
-                    </div>
-                 </a>
-             </li>
-            </ul>
-        </div>
-    </div>
-    <div style="height:30px"></div>
-    <div id="nb-menu" style="padding-bottom:3px;">
-        <ul class="nb-ul">
-            <li class="nb-relative ">
-                <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbk" class="link-hover"></a>
-                <div class="menu-inside" style="height:38px;">
-					<i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/p2q4h61bQ467bNqNdZDh2U47bN3sS3.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                    <div class="font-div" style="padding-top:0px;margin-bottom:3px;">商城首页</div>
-                </div>
-            </li>
-            <li class="nb-relative ">
-                <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=50&cate_id=78" class="link-hover"></a>
-                <div class="menu-inside" style="height:38px;">
-					<i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/Kz180REfe55fBlL1UAR888er01NvFV.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                    <div class="font-div" style="padding-top:0px;margin-bottom:3px;">特惠女装</div>
-                </div>
-            </li>
-            <li class="nb-relative ">
-                <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=20" class="link-hover"></a>
-                <div class="menu-inside" style="height:38px;">
-					<i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/fF7RT6U62EOB1pO7FUnpN2e6UeAAea.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                    <div class="font-div" style="padding-top:0px;margin-bottom:3px;">19.9封顶</div>
-                </div>
-            </li>
-            <li class="nb-relative ">
-                <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=so&m=bsht_tbk" class="link-hover"></a>
-                <div class="menu-inside" style="height:38px;">
-					<i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/SJSsrNaAAS6sjnzujh82js3SrxiStL.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                    <div class="font-div" style="padding-top:0px;margin-bottom:3px;">全网搜索</div>
-                </div>
-            </li>
-            <li class="nb-relative ">
-                <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=uc&m=bsht_tbkdl" class="link-hover"></a>
-                <div class="menu-inside" style="height:38px;">
-					<i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/iwFHPz6Pkjn1A1wPeFPPp6H6z66C4p.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                    <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
-                </div>
-            </li>
-       </ul>
-    </div>
-    <div style="height:50px"></div>
 <style>
-/*新底部*/
-#nb-menu {
-    position: fixed;
-    border-top: #f0f0f0 1px solid;
-    background: #fff;
-    z-index: 99999;
-    width: 100%;
-	max-width:540px;
-	bottom:0px;
-	left:0px;
-	right:0px;
-	margin:auto;
-}
+    .suggest.dropdown .dropdown-menu {
+        display: block;
+        width: 6.8rem;
+        margin-top: 0;
+        padding: 0px 0px 0px 10px;
+    }
+    .suggest.dropdown .dropdown-menu {
+        max-height: 330px;
+        box-shadow: 0 2px 4px 0 rgba(32,32,64,.16);
+    }
+    .dropdown .dropdown-menu {
+        border: 1px solid #d3d3db;
+        position: absolute;
+        top: 100%;
+        margin-top: 10px;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        min-width: 100%;
+        max-height: 330px;
+        font-size: .25rem;
+        text-align: left;
+        padding-left: 10px;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border-radius: 4px;
+        box-sizing: border-box;
+        overflow: auto;
+        -moz-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
+        box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
+    }
+    .dropdown .dropdown-menu, .table-container .scroll-fix .table {
+        -webkit-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
+        -ms-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
+        -o-box-shadow: 0 1px 2px 0 rgba(32,32,64,.16);
+    }
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
 
-#nb-menu ul {
-    display: -webkit-box;
-    width: 100%;
-	height:46px;
-	margin:0 auto;
-	list-style-type: disc;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0px;
-}
+    .highlight {
+        color: #f50;
+    }
 
-#nb-menu li {
-    -webkit-box-flex: 1;
-    font-size: 12px;
-    padding: 4px 0;
-    text-align: center;
-    height: 38px;
-    line-height: 15px;
-    color: #999;
-	width:25%;
-	list-style:none;
-}
-
-#nb-menu li .font-div {
-    color: #999999 !important;
-	margin-top:-7px;
-}
-
-#nb-menu li .menu-inside {
-}
-
-#nb-menu li .menu-inside span {
-    display: block;
-    margin: 0 auto 3px auto;
-    width: 21px;
-    height: 21px;
-    background-size: contain !important;
-}
-
-#nb-menu li .menu-inside i {
-    display: block;
-    margin: 0 auto 0px auto;
-    width: 25px;
-    height: 25px;
-    font-size: 25px;
-	color: #999999;
-	padding-top:3px;
-	margin-bottom:3px;
-    background-size: contain !important;
-}
-.link-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
-.nb-relative {
-    position: relative;
-    top: 0;
-    left: 0;
-}
-.go-top {
-    display: block;
-    width: 42px;
-    height: 42px;
-    position: fixed;
-    right: 20px;
-    bottom: 64px;
-    z-index: 10000;
-    background-image: url('../addons/bsht_tbkquan/res/images/go_top.png');
-    background-size: contain;
-    opacity: 0;
-    -webkit-transition: bottom .8s ease, opacity .6s ease;
-}
-.top-button-show {
-    bottom: 54px;
-    opacity: 1;
-}
-.top-button-hide {
-    bottom: -54px;
-    opacity: 0;
-}
-.go-top span {
-    position: absolute;
-    bottom: 9px;
-    width: 100%;
-    display: block;
-    height: 12px;
-    line-height: 12px;
-    text-align: center;
-    font-size: 10px;
-    color: #333;
-}
-.result-img{
-    position: relative;
-    float: left;
-    padding: .06533rem 0rem;
-    width: 2.9rem;
-    height: 2.9133rem;
-    border-bottom: 1px #e5e5e5 solid;
-    color: #999;
-	background:#fff;
-}
-.result-img img {
-    width: 2.88rem;
-    height: 2.88rem;
-    vertical-align: middle;
-
-}
-.result-desc {
-    position: relative;
-    float: right;
-    padding: .06533rem .24rem .06533rem .1rem;
-    width: 6.74rem;
-    height: 2.9133rem;
-    border-bottom: 1px #e5e5e5 solid;
-    color: #999;
-	background:#fff;
-}
+    .dropdown-menu a {
+        color: #666;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+    }
 </style>
-<!--初始界面-->
-</div>
+<style>
+    /*新底部*/
+    #nb-menu {
+        position: fixed;
+        border-top: #f0f0f0 1px solid;
+        background: #fff;
+        z-index: 99999;
+        width: 100%;
+        max-width:540px;
+        bottom:0px;
+        left:0px;
+        right:0px;
+        margin:auto;
+    }
 
+    #nb-menu ul {
+        display: -webkit-box;
+        width: 100%;
+        height:46px;
+        margin:0 auto;
+        list-style-type: disc;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 0px;
+    }
 
+    #nb-menu li {
+        -webkit-box-flex: 1;
+        font-size: 12px;
+        padding: 4px 0;
+        text-align: center;
+        height: 38px;
+        line-height: 15px;
+        color: #999;
+        width:25%;
+        list-style:none;
+    }
+
+    #nb-menu li .font-div {
+        color: #999999 !important;
+        margin-top:-7px;
+    }
+
+    #nb-menu li .menu-inside {
+    }
+
+    #nb-menu li .menu-inside span {
+        display: block;
+        margin: 0 auto 3px auto;
+        width: 21px;
+        height: 21px;
+        background-size: contain !important;
+    }
+
+    #nb-menu li .menu-inside i {
+        display: block;
+        margin: 0 auto 0px auto;
+        width: 25px;
+        height: 25px;
+        font-size: 25px;
+        color: #999999;
+        padding-top:3px;
+        margin-bottom:3px;
+        background-size: contain !important;
+    }
+    .link-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+
+    .nb-relative {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    .go-top {
+        display: block;
+        width: 42px;
+        height: 42px;
+        position: fixed;
+        right: 20px;
+        bottom: 64px;
+        z-index: 10000;
+        background-image: url('../page/images/go_top.png');
+        background-size: contain;
+        opacity: 0;
+        -webkit-transition: bottom .8s ease, opacity .6s ease;
+    }
+    .top-button-show {
+        bottom: 54px;
+        opacity: 1;
+    }
+    .top-button-hide {
+        bottom: -54px;
+        opacity: 0;
+    }
+    .go-top span {
+        position: absolute;
+        bottom: 9px;
+        width: 100%;
+        display: block;
+        height: 12px;
+        line-height: 12px;
+        text-align: center;
+        font-size: 10px;
+        color: #333;
+    }
+    .result-img{
+        position: relative;
+        float: left;
+        padding: .06533rem 0rem;
+        width: 2.9rem;
+        height: 2.9133rem;
+        border-bottom: 1px #e5e5e5 solid;
+        color: #999;
+        background:#fff;
+    }
+    .result-img img {
+        width: 2.88rem;
+        height: 2.88rem;
+        vertical-align: middle;
+
+    }
+    .result-desc {
+        position: relative;
+        float: right;
+        padding: .06533rem .24rem .06533rem .1rem;
+        width: 6.74rem;
+        height: 2.9133rem;
+        border-bottom: 1px #e5e5e5 solid;
+        color: #999;
+        background:#fff;
+    }
+</style>
+</head>
+
+<body>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="fq_alert">
+      <div class="am-modal-dialog">
+        <div class="am-modal-hd" id="fq_alert_title"></div>
+        <div class="am-modal-bd" id="fq_alert_info">
+        </div>
+        <div class="am-modal-footer">
+          <span class="am-modal-btn">确定</span>
+        </div>
+      </div>
+    </div>
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="fq_confirm">
+      <div class="am-modal-dialog">
+        <div class="am-modal-hd" id="fq_confirm_title"></div>
+        <div class="am-modal-bd" id="fq_confirm_info"></div>
+        <div class="am-modal-footer">
+          <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+      </div>
+    </div>
+    <div class="fq-whole am-text-sm" style="max-width:540px;width:100%;max-width:540px;bottom:0px;left:0px;right:0px;margin:auto;">
+        <!--查询窗口-->
+        <header class="head am-text-center am-center">
+            <img src="../page/images/super_searchbg.png" />
+            <form action="" method="get" class="am-form" onSubmit="return search()" id="search-form">
+                <a class="iconfont icon-icon"></a>
+                <input id="itemurl" name="title" type="text" class="am-round" placeholder="搜索粘贴商品标题抢优惠券~" value="" autocomplete="off">
+                <div class="suggest dropdown" style="display: none;top: 40px;left: 40px;z-index: 9998;width: 71%;position: absolute;">
+                    <ul class="dropdown-menu" id="suggest">
+                    </ul>
+                </div>
+                <input type="hidden" name="shopid" value="0"/>
+                <a class="fq-searchbtn" id="clickurl">搜索</a>
+            </form>
+        </header>
+        <!--查询窗口-->
+        <!--初始界面-->
+        <!--交互界面-->
+        <div class="fq-background-white am-margin-top-xs am-padding-sm am-hide" id="searching">
+          <div class="am-text-center"><i class="am-icon-spinner am-icon-spin"></i> 正在为您查询<span id="search_title"></span>的商品优惠券，请稍后......</div>
+        </div>
+        <!--交互界面-->
+        <!--初始界面-->
+        <div class="fq-super-commend" id="course">
+            <div class="fq-background-white am-margin-bottom-sm am-padding-sm">
+                <div class="fq-label am-margin-bottom-sm am-text-default">
+                    <span>热门标签</span>
+                    <span class="am-text-xs fq-super-replace change_tickets">
+                        <i class="am-icon-refresh am-margin-right-xs"></i>换一批</span>
+                </div>
+                <div class="tickets_content">
+                </div>
+            </div>
+
+            <div class="fq-background-white am-padding-vertical-sm am-margin-bottom-sm am-padding-left-sm">
+                <div class="fq-label am-padding-bottom-sm am-text-default">
+                    边看边买
+                </div>
+                <div class="fq-super-slider am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:160, itemMargin: 5,animationSpeed:400, slideshow: true,playAfterPaused: 6000}">
+                    <ul class="am-slides">
+                     <li>
+                         <a class="fq-super-goods am-text-left" href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=show_api&m=bsht_tbk&iid=525729431977&yj=2.684&tit=5rSX6KGj6KKL5oqk5rSX6KKL57uG572R5aWX6KOF5rSX6KGj5pyN5YaF6KGj5paH6IO455qE5rSX5oqk6KKL5aSn5Y_b35rSX6KGj5py65LiT55So572R6KKL&wenan=44CQ5aSn5Y_b3K_bS4reWPtyvlsI_alj7cr6L_b35L2g5Y_b377yMNOS7tuWll_bOAkeWKoOWOmumdouaWme_b8jOe7j_bS5heiAkOeUqO_b8jOmYsue8oOe7lemYsuWPmOW9ou_b8jOe7huiHtOe9kemdou_b8jOWRteaKpOS9oOeahOWunei0neiho_beJqe_b8jOaCqOeahOiho_beJqea0l_baKpOS4k_bWutu_b8jOWPpumAgeS4pOS4qua0l_biho_beQg_b_b8gQ_c_c&pic=http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg&fee1=11.80&fee2=8.80&qfee=3&fl=0&isdx=&shopid=0&isnb=1&maijia_id=105046306&isnice=2&stype=5&shopyuji=&hdk=1&actid=0cb8d2f129934786a2c671040f4a910b&vid=50069116160&q_yl=49050&q_zl=50000&qcid=10&istm=1">
+                            <img src="http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg_200x200.jpg" />
+                            <div class="fq-super-messages am-padding-xs">
+                                <span class="fq-super-sale am-text-xs">月销30002</span>
+                                <span class="am-text-xs" style="color:#F42B45">券后￥8.8</span>
+                                <span class="fq-coupon">3元券</span>
+                            </div>
+                         </a>
+                     </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height:30px"></div>
+            <div id="nb-menu" style="padding-bottom:3px;">
+                <ul class="nb-ul">
+                    <li class="nb-relative ">
+                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbk" class="link-hover"></a>
+                        <div class="menu-inside" style="height:38px;">
+                            <i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/p2q4h61bQ467bNqNdZDh2U47bN3sS3.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">商城首页</div>
+                        </div>
+                    </li>
+                    <li class="nb-relative ">
+                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=50&cate_id=78" class="link-hover"></a>
+                        <div class="menu-inside" style="height:38px;">
+                            <i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/Kz180REfe55fBlL1UAR888er01NvFV.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">特惠女装</div>
+                        </div>
+                    </li>
+                    <li class="nb-relative ">
+                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=20" class="link-hover"></a>
+                        <div class="menu-inside" style="height:38px;">
+                            <i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/fF7RT6U62EOB1pO7FUnpN2e6UeAAea.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">19.9封顶</div>
+                        </div>
+                    </li>
+                    <li class="nb-relative ">
+                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=so&m=bsht_tbk" class="link-hover"></a>
+                        <div class="menu-inside" style="height:38px;">
+                            <i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/SJSsrNaAAS6sjnzujh82js3SrxiStL.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">全网搜索</div>
+                        </div>
+                    </li>
+                    <li class="nb-relative ">
+                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=uc&m=bsht_tbkdl" class="link-hover"></a>
+                        <div class="menu-inside" style="height:38px;">
+                            <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/iwFHPz6Pkjn1A1wPeFPPp6H6z66C4p.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
+                        </div>
+                    </li>
+               </ul>
+            </div>
+            <div style="height:50px"></div>
+        </div>
+    </div>
 <!--今日优选-->
-<script>
+<%--<script>
     $('.fq-ad-slider').flexslider({
         playAfterPaused: 6000,
         before: function(slider) {
@@ -557,89 +511,62 @@
             }
             }
         }
-});
-
-</script>
-
+    });
+</script>--%>
 <script>
+    $('#clickurl').click(function(){
+        var itemurl = $('#itemurl').val().match(/[a-zA-z]+:\/\/[^\s]*/);
+        if(itemurl){
+            $('#fq_alert_info').text('请使用商品标题搜索');
+            $('#fq_alert').modal();
+            return false;
+        }
+        if($('#itemurl').val()==''){
+            $('#fq_alert_info').text('请输入商品标题');
+            $('#fq_alert').modal();
+            return false;
+        }
+        var title = $('#itemurl').val().replace('/','^');
+        window.location.href=""+"/manage/skipItemListPage.do?title="+title;
+    });
 
-function nbsosq(obj){
-var jumpnbq = obj.name;
-if(jumpnbq){
-$('#itemurl').val(jumpnbq);
-$('#suggest').hide();
-//document.getElementById("search-form").submit();
-search();
-}
-}	
-
-	$('#itemurl').val('');
-	
-	$('.hot_label').click(function(){
-		$('#itemurl').val($(this).text());
-	});
-	
-	$('#clickurl').click(function(){
-		var itemurl = $('#itemurl').val().match(/[a-zA-z]+:\/\/[^\s]*/);
-		if(itemurl){
-			$('#fq_alert_info').text('请使用商品标题搜索');
-			$('#fq_alert').modal();
-			return false;
-		}
-		if($('#itemurl').val()==''){
-			$('#fq_alert_info').text('请输入商品标题');
-			$('#fq_alert').modal();
-			return false;
-		}
-		var title = $('#itemurl').val().replace('/','^');
-		
-		window.location.href="http://wx.sskk88.cn/app/index.php?c=entry&i=4&m=bsht_tbkquan&do=so&itemid=&sid=&itemfee=&itempic=&nb_shopid=0&keyword="+title+"&shopid=0&actid=&openid=";
-		
-	});
-	
-	function search(){
-		var itemurl = $('#itemurl').val().match(/[a-zA-z]+:\/\/[^\s]*/);
-		if(itemurl){
-			$('#fq_alert_info').text('请使用商品标题搜索');
-			$('#fq_alert').modal();
-			return false;
-		}
-		var jumpurl = "http://wx.sskk88.cn/app/index.php?c=entry&i=4&m=bsht_tbkquan&do=so&itemid=&sid=&itemfee=&itempic=&nb_shopid=0&keyword="+$.trim($('#itemurl').val())+"&shopid=0&actid=&openid=";
-		//alert(jumpurl);
-		window.location.href=jumpurl;
+    function search(){
+        var itemurl = $('#itemurl').val().match(/[a-zA-z]+:\/\/[^\s]*/);
+        if(itemurl){
+            $('#fq_alert_info').text('请使用商品标题搜索');
+            $('#fq_alert').modal();
+            return false;
+        }
+        var title = $('#itemurl').val().replace('/','^');
+        //默认查询站内有优惠券的商品，综合排序
+        var jumpurl = ""+"/manage/skipItemListPage.do?title="+title;
+        window.location.href=jumpurl;
         return false;
-	}
+    }
 </script>
-	
-
-
 <script>
-    $('.item_list').on('click','.click_video',function(){
-            $('#fq-video').modal();
-            var vid = $(this).attr('data-vid');
-            if(vid>0){
-                var a = 'http://cloud.video.t';
-                var b = 'aobao.co';	
-                var src = a+b+'m/play/u/1/p/1/e/6/t/1/'+vid+'.mp4';
-                $('#video_url').attr('src',src);
-            }
-    })
-    
+/*    $('.item_list').on('click','.click_video',function(){
+        $('#fq-video').modal();
+        var vid = $(this).attr('data-vid');
+        if(vid>0){
+            var a = 'http://cloud.video.t';
+            var b = 'aobao.co';
+            var src = a+b+'m/play/u/1/p/1/e/6/t/1/'+vid+'.mp4';
+            $('#video_url').attr('src',src);
+        }
+    })*/
 </script>
-<script>;</script></body>
+</body>
 </html>
 
 <script>
-    
-     //热门标签 
+//热门标签
 $('.change_tickets').click(function(){
         change();
 })
-
 </script>
 
-<script>
-
+<%--<script>
 function change(){
 $('.change_tickets').css('display','none'); 
         $.ajax({
@@ -665,9 +592,9 @@ $('.change_tickets').css('display','none');
                 
             }
 });
-}
+}--%>
 
-$(function() {
+<%--$(function() {
 change();
 
 $('#itemurl').on('input propertychange', function() {
@@ -719,5 +646,12 @@ wx.ready(function () {
 wx.hideAllNonBaseMenuItem();
 });
 });
-</script>
-<script>var ckua = navigator.userAgent.toLowerCase();if (ckua.match(/iphone/i) == "iphone"){if(/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)){console.log('X');$("#nb-menu").attr('style','padding-bottom:30px');}}</script>
+</script>--%>
+<%--<script>
+    var ckua = navigator.userAgent.toLowerCase();
+        if (ckua.match(/iphone/i) == "iphone"){
+            if(/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)){
+                console.log('X');$("#nb-menu").attr('style','padding-bottom:30px');
+            }
+}
+</script>--%>

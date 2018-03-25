@@ -75,7 +75,7 @@
     </ul>
 </div>--%>
 <div class="nbleft" style="position: fixed; top: 15px; z-index: 99999; width: 100%; max-width: 53.75px; margin: 0px auto; left: 0px; right: 376.25px;">
-    <a href="javascript:void(0);" onclick="javascript:history.back(-1);">
+    <a href="javascript:void(0);" onclick="window.location.href = document.referrer;">
         <img src="../page/images/return.png" style="width:35px;float:left;margin-left:15px;">
     </a>
 </div>
@@ -131,8 +131,8 @@
                     <img id="loadUrl" src="${item.pictUrl}"/>
                     <h2>${item.title}</h2>
                     <div class="infor">
-                        <em size="1">券后:${item.zkFinalPrice}</em>
-                        <em size="1">已售:${item.volume}</em>
+                        <em size="1">折后:${item.zkPrice}</em>
+                        <em size="1">已售:${item.totalNum}</em>
                     </div>
                 </a>
             </li>

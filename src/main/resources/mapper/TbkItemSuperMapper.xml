@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxn.weixin.dal.mapper.TbkItemSuperMapper">
+    <resultMap id="BaseResultMap" type="com.wxn.weixin.pojo.TbkItemSuperDO">
+        <result column="debugInfo" jdbcType="VARCHAR" property="debugInfo" />
+        <result column="tkRate" jdbcType="DECIMAL" property="tkRate" />
+        <result column="leafCatId" jdbcType="VARCHAR" property="leafCatId" />
+        <result column="couponEffectiveStartTime" jdbcType="VARCHAR" property="couponEffectiveStartTime" />
+        <result column="couponEffectiveEndTime" jdbcType="VARCHAR" property="couponEffectiveEndTime" />
+        <result column="couponOriLink" jdbcType="VARCHAR" property="couponOriLink" />
+        <result column="couponLink" jdbcType="VARCHAR" property="couponLink" />
+        <result column="couponAmount" jdbcType="VARCHAR" property="couponAmount" />
+        <result column="sellerId" jdbcType="VARCHAR" property="sellerId" />
+        <result column="couponLinkTaoToken" jdbcType="VARCHAR" property="couponLinkTaoToken" />
+        <result column="rlRate" jdbcType="DECIMAL" property="rlRate" />
+        <result column="tkCommFee" jdbcType="DECIMAL" property="tkCommFee" />
+        <result column="rootCatScore" jdbcType="VARCHAR" property="rootCatScore" />
+        <result column="couponActivityId" jdbcType="VARCHAR" property="couponActivityId" />
+        <result column="couponInfo" jdbcType="VARCHAR" property="couponInfo" />
+        <result column="hasSame" jdbcType="VARCHAR" property="hasSame" />
+        <result column="couponTotalCount" jdbcType="DECIMAL" property="couponTotalCount" />
+        <result column="userTypeName" jdbcType="VARCHAR" property="userTypeName" />
+        <result column="userType" jdbcType="VARCHAR" property="userType" />
+        <result column="reservePrice" jdbcType="DECIMAL" property="reservePrice" />
+        <result column="tkCommonRate" jdbcType="DECIMAL" property="tkCommonRate" />
+        <result column="umpBonus" jdbcType="VARCHAR" property="umpBonus" />
+        <result column="eventCreatorId" jdbcType="VARCHAR" property="eventCreatorId" />
+        <result column="eventRate" jdbcType="DECIMAL" property="eventRate" />
+        <result column="includeDxjh" jdbcType="VARCHAR" property="includeDxjh" />
+        <result column="hasRecommended" jdbcType="VARCHAR" property="hasRecommended" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="tkFinalRate" jdbcType="DECIMAL" property="tkFinalRate" />
+        <result column="nick" jdbcType="VARCHAR" property="nick" />
+        <result column="tkCommonFee" jdbcType="DECIMAL" property="tkCommonFee" />
+        <result column="auctionUrl" jdbcType="VARCHAR" property="auctionUrl" />
+        <result column="couponLeftCount" jdbcType="DECIMAL" property="couponLeftCount" />
+        <result column="sameItemPid" jdbcType="VARCHAR" property="sameItemPid" />
+        <result column="biz30day" jdbcType="VARCHAR" property="biz30day" />
+        <result column="hasUmpBonus" jdbcType="VARCHAR" property="hasUmpBonus" />
+        <result column="isBizActivity" jdbcType="VARCHAR" property="isBizActivity" />
+        <result column="couponStartFee" jdbcType="VARCHAR" property="couponStartFee" />
+        <result column="tk3rdRate" jdbcType="DECIMAL" property="tk3rdRate" />
+        <result column="tkFinalFee" jdbcType="VARCHAR" property="tkFinalFee" />
+        <result column="pictUrl" jdbcType="VARCHAR" property="pictUrl" />
+        <result column="rootCatId" jdbcType="VARCHAR" property="rootCatId" />
+        <result column="auctionId" jdbcType="VARCHAR" property="auctionId" />
+        <result column="zkPrice" jdbcType="DECIMAL" property="zkPrice" />
+        <result column="couponShortLink" jdbcType="VARCHAR" property="couponShortLink" />
+        <result column="totalFee" jdbcType="DECIMAL" property="totalFee" />
+        <result column="totalNum" jdbcType="DECIMAL" property="totalNum" />
+        <result column="shopTitle" jdbcType="VARCHAR" property="shopTitle" />
+        <result column="rootCategoryName" jdbcType="VARCHAR" property="rootCategoryName" />
+        <result column="tkMktStatus" jdbcType="VARCHAR" property="tkMktStatus" />
+        <result column="isCode" jdbcType="VARCHAR" property="isCode" />
+        <result column="isShow" jdbcType="VARCHAR" property="isShow" />
+        <result column="itemType" jdbcType="VARCHAR" property="itemType" />
+    </resultMap>
+
+    <select id="getItems" parameterType="com.wxn.weixin.pojo.SuperQueryPo" resultMap="BaseResultMap">
+        select
+          t.auctionId,
+          t.pictUrl,
+          t.title,
+          t.reservePrice,
+          t.totalNum,
+          t.zkPrice,
+          t.couponAmount,
+          t.tkCommonRate
+        from
+          t_tbk_super_item t
+        where 1=1
+        <if test="title != null and title != ''">
+            and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="itemType != null and itemType != ''">
+            and  t.itemType = #{itemType,jdbcType=VARCHAR}
+        </if>
+        <if test="minfee != null and minfee != ''">
+            and t.zkPrice <![CDATA[ >= ]]> #{minfee,jdbcType=DECIMAL}
+        </if>
+        <if test="maxfee != null and maxfee != ''">
+            and t.zkPrice <![CDATA[ <= ]]> #{maxfee,jdbcType=DECIMAL}
+        </if>
+        <if test='onlyq != null and onlyq == "0"'>
+            and t.couponTotalCount <![CDATA[<>]]> 0
+        </if>
+        <if test='onlyq != null and onlyq == "1"'>
+            and t.couponTotalCount = 0
+        </if>
+        <if test='operType != null and operType == "1"'>
+            and t.zkPrice <![CDATA[ <= ]]> 9.9
+        </if>
+        <if test='operType != null and operType == "2"'>
+            and t.zkPrice <![CDATA[ <= ]]> 19.9
+        </if>
+        <if test='operType != null and operType == "3"'>
+            and t.itemType = '1'
+        </if>
+        <if test='gotype != null and gotype == "1" and operType != "3"'>
+            order by t.zkPrice,t.totalNum,t.couponAmount desc
+        </if>
+        <if test='gotype != null and gotype == "2"'>
+            order by t.tkCommonRate desc
+        </if>
+        <if test='(gotype != null and gotype == "3") or operType == "3"'>
+            order by t.totalNum desc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "up"'>
+            order by t.zkPrice asc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "down"'>
+            order by t.zkPrice desc
+        </if>
+    </select>
+
+    <select id="getItemsByPo" parameterType="com.wxn.weixin.pojo.SuperQueryPo" resultMap="BaseResultMap">
+        select
+        t.auctionId,
+        t.pictUrl,
+        t.title,
+        t.reservePrice,
+        t.totalNum,
+        t.zkPrice,
+        t.couponAmount,
+        t.tkCommonRate
+        from
+        t_tbk_super_item t
+        where 1=1
+        <if test="title != null and title != ''">
+            and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test='onlyq != null and onlyq == "0"'>
+            and t.couponTotalCount <![CDATA[<>]]> 0
+        </if>
+        <if test='gotype != null and gotype == "1"'>
+            order by t.zkPrice,t.totalNum,t.couponAmount desc
+        </if>
+    </select>
+
+
+    <insert id="insert" parameterType="com.wxn.weixin.pojo.TbkItemSuperDO">
+        insert into t_tbk_super_item (
+          tkRate,
+          leafCatId,
+          couponEffectiveStartTime,
+          couponEffectiveEndTime,
+          couponAmount,
+          sellerId,
+          couponInfo,
+          couponTotalCount,
+          userType,
+          reservePrice,
+          tkCommonRate,
+          title,
+          nick,
+          auctionUrl,
+          pictUrl,
+          auctionId,
+          zkPrice,
+          totalNum,
+          itemType
+          )
+        VALUES (
+            #{tkRate,jdbcType=DECIMAL},
+            #{leafCatId,jdbcType=VARCHAR},
+            #{couponEffectiveStartTime,jdbcType=VARCHAR},
+            #{couponEffectiveEndTime,jdbcType=VARCHAR},
+            #{couponAmount,jdbcType=DECIMAL},
+            #{sellerId,jdbcType=VARCHAR},
+            #{couponInfo,jdbcType=VARCHAR},
+            #{couponTotalCount,jdbcType=DECIMAL},
+            #{userType,jdbcType=VARCHAR},
+            #{reservePrice,jdbcType=DECIMAL},
+            #{tkCommonRate,jdbcType=DECIMAL},
+            #{title,jdbcType=VARCHAR},
+            #{nick,jdbcType=VARCHAR},
+            #{auctionUrl,jdbcType=VARCHAR},
+            #{pictUrl,jdbcType=VARCHAR},
+            #{auctionId,jdbcType=VARCHAR},
+            #{zkPrice,jdbcType=DECIMAL},
+            #{totalNum,jdbcType=DECIMAL},
+            #{itemType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--口令转换后，更改口令状态-->
+    <update id="updateTbkItemByItemId" parameterType="java.lang.String">
+        UPDATE t_tbk_super_item t SET
+          t.isCode = '1',
+          t.isShow = '1'
+        where t.isCode = '2'
+        and t.isShow = '2'
+        and   t.auctionId = #{auctionId,jdbcType=VARCHAR}
+    </update>
+</mapper>

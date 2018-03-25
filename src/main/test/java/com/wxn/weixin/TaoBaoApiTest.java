@@ -142,5 +142,23 @@ public class TaoBaoApiTest {
         System.out.println(rsp.getBody());
     }
 
+    /**
+     * 优惠券信息查询
+     * @throws ApiException
+     */
+    @Test
+    public void couponMessage1()throws ApiException{
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TbkUatmFavoritesGetRequest req = new TbkUatmFavoritesGetRequest();
+        //req.setPageNo(1L);
+        //req.setPageSize(20L);
+        req.setFields("favorites_title,favorites_id,type");
+       // req.setType(1L);
+        TbkUatmFavoritesGetResponse rsp = client.execute(req);
+        System.out.println(rsp.getBody());
+    }
+
+
+
 
 }

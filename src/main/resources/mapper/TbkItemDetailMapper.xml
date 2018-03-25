@@ -35,7 +35,7 @@
           TAO_TOKEN,
           SHORT_LINK_URL
           from t_tbk_item_detail t
-        where t.IS_CODE = '1'
+        where t.IS_CODE = '2'
         <if test="itemId != null and itemId != ''">
             and  t.ITEM_ID = #{itemId,jdbcType=VARCHAR}
         </if>
