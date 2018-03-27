@@ -16,9 +16,9 @@
 	<link href="../page/itemList/nbnew.css" rel="stylesheet" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="../page/itemList/alert.css" />
 	<link href="../page/itemList/animate.min.css" rel="stylesheet" type="text/css" />
-	<%--<script type="text/javascript" src="../page/itemList/swiper-3.3.1.jquery.min.js"></script>--%>
+	<script type="text/javascript" src="../page/itemList/swiper-3.3.1.jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../page/itemList/swiper-3.3.1.min.css">
-	<%--<script src="../page/itemList/main.js"></script>--%>
+	<script src="../page/itemList/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="../page/itemList/nb_plus.css" />
 	<link rel="stylesheet" type="text/css" href="../page/itemList/layer.css" />
 	<div id="msv">
@@ -355,30 +355,30 @@
 
 	</style>
 	<title id="title">
-        <c:if test="${tbkItem.itemType eq '1'}">女装</c:if>
-        <c:if test="${tbkItem.itemType eq '2'}">男装</c:if>
-        <c:if test="${tbkItem.itemType eq '3'}">内衣</c:if>
-        <c:if test="${tbkItem.itemType eq '4'}">母婴</c:if>
-        <c:if test="${tbkItem.itemType eq '5'}">化妆品</c:if>
-        <c:if test="${tbkItem.itemType eq '6'}">居家</c:if>
-        <c:if test="${tbkItem.itemType eq '7'}">鞋包</c:if>
-        <c:if test="${tbkItem.itemType eq '8'}">配饰</c:if>
-        <c:if test="${tbkItem.itemType eq '9'}">车品</c:if>
-        <c:if test="${tbkItem.itemType eq '10'}">其它</c:if>
+		<c:if test="${tbkItem.itemType eq '1'}">女装</c:if>
+		<c:if test="${tbkItem.itemType eq '2'}">男装</c:if>
+		<c:if test="${tbkItem.itemType eq '3'}">内衣</c:if>
+		<c:if test="${tbkItem.itemType eq '4'}">母婴</c:if>
+		<c:if test="${tbkItem.itemType eq '5'}">化妆品</c:if>
+		<c:if test="${tbkItem.itemType eq '6'}">居家</c:if>
+		<c:if test="${tbkItem.itemType eq '7'}">鞋包</c:if>
+		<c:if test="${tbkItem.itemType eq '8'}">配饰</c:if>
+		<c:if test="${tbkItem.itemType eq '9'}">车品</c:if>
+		<c:if test="${tbkItem.itemType eq '10'}">其它</c:if>
 		<c:if test="${tbkItem.operType eq '1'}">9.9专区</c:if>
 		<c:if test="${tbkItem.operType eq '2'}">19.9专区</c:if>
 		<c:if test="${tbkItem.operType eq '3'}">特惠女装</c:if>
-    </title>
+	</title>
 	<input type="hidden" id="operType" name="${tbkItem.operType}"/>
-    <input type="hidden" id="titleId" name="${tbkItem.itemType}"/>
+	<input type="hidden" id="titleId" name="${tbkItem.itemType}"/>
 	<meta name="keywords" content="超级内部优惠券中心，每天超低价惊喜等着你！">
 	<meta name="description" content="超级内部优惠券中心，每天超低价惊喜等着你！">
 	<script src="../page/js/jquery.min.js"></script>
-	<%--<script src="../page/itemList/jq.nb.main.js?v=2017"></script>
-	<script src="../page/itemList/jq.nb.plus.js"></script>--%>
-	<%--<script type="text/javascript" src="../page/itemList/clipboard.min.js"></script>--%>
-	<%--<script src="../page/itemList/jquery.complete.js"></script>--%>
-	<%--<script type="text/javascript" src="../page/itemList/layer.js"></script>--%>
+	<script src="../page/itemList/jq.nb.main.js?v=2017"></script>
+	<script src="../page/itemList/jq.nb.plus.js"></script>
+	<script type="text/javascript" src="../page/itemList/clipboard.min.js"></script>
+	<script src="../page/itemList/jquery.complete.js"></script>
+	<script type="text/javascript" src="../page/itemList/layer.js"></script>
 	<style type="text/css">*{margin:0; padding:0;}
 	a{text-decoration: none;}
 	img{max-width: 100%; height: auto;}
@@ -397,14 +397,6 @@
                 alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
             }
         }
-        window.sysinfo = {
-            'uniacid': '4',		'acid': '4',				'siteroot': 'http://wx.sskk88.cn/',
-            'siteurl': 'http://wx.sskk88.cn/app/index.php?i=4&c=entry&cate_id=78&do=list_all&m=bsht_tbk',
-            'attachurl': 'http://wx.sskk88.cn/attachment/',
-            'attachurl_local': 'http://wx.sskk88.cn/attachment/',
-            'attachurl_remote': '',
-            'MODULE_URL': 'http://wx.sskk88.cn/addons/bsht_tbk/',		'cookie' : {'pre': '2d72_'}
-        };
         // jssdk config 对象
         jssdkconfig = null || {};
         // 是否启用调试
@@ -632,7 +624,7 @@
 					<div class="div_Return_0011" onclick="javascript:history.go(-1);return false;"></div>
 					<input type="search" class="word_input333 sokey" value="" placeholder="" onfocus="this.className = 'word_input3333';document.getElementById('div_Return_0022').style.display='block';document.getElementById('div_Return_002').style.display='none';" onblur="if(this.value==''){this.className = 'word_input333';document.getElementById('div_Return_0022').style.display='none';document.getElementById('div_Return_002').style.display='block';}else{}" onkeydown="if(event.keyCode==13) {}" id="sokey" name="keywords" autocomplete="off">
 				</form>
-				<div class="div_Return_0022" id="div_Return_002" onclick="javascript:window.location.href='../manage/tbkItems.do';"></div>
+				<div class="div_Return_0022" id="div_Return_002" onclick="javascript:window.location.href='../manage/index.do';"></div>
 				<div class="div_Return_0022_so btndh" id="div_Return_0022" onclick="goso();" style="display:none"></div>
 			</div>
 			<div class="goods_nav">
@@ -662,17 +654,17 @@
 							<input type="search" style="padding-right: 25px;width:67.5%" class="sokey word_input333" value="" placeholder="" onfocus="this.className = 'word_input3333';document.getElementById('div_Return_00232').style.display='block';document.getElementById('div_Return_0023').style.display='none';document.getElementById('delete').style.display='block';" onblur="if(this.value==''){this.className = 'word_input333';document.getElementById('div_Return_00232').style.display='none';document.getElementById('div_Return_0023').style.display='block';document.getElementById('delete').style.display='none';}else{}" onkeydown="if(event.keyCode==13) {}" id="sokey2" name="keywords" autocomplete="off">
 							<span class="clear" id="delete" onclick="$('#suggest').hide();$('#suggest2').hide();$('#sokey2').val('');document.getElementById('delete').style.display='none';$('#sokey2').focus();" style="width: 30px;height: 30px;line-height: 30px;text-align: center;padding-right: 0px;opacity: 0.8;color: #000;position:absolute;right:13%;top:8px;display:none;">&times;</span>
 						</form>
-						<div class="div_Return_0022" id="div_Return_0023" onclick="javascript:window.location.href='../manage/tbkItems.do';" style="display:block"></div>
+						<div class="div_Return_0022" id="div_Return_0023" onclick="javascript:window.location.href='../manage/index.do';" style="display:block"></div>
 						<div class="div_Return_0022_so btndh" id="div_Return_00232" onclick="goso2();" style="display:none"></div>
 					</div>
 					<table width="100%" height="39" border="0" cellpadding="0" cellspacing="0" class='stable'>
 						<tbody>
-							<tr align="center" valign="middle">
-								<td width="29%" onclick="zksq_xl(1,320)"><span class="STYLE3" id="dc_xl_001" style="/* color: rgb(255, 95, 73); */">全部分类</span><img id="cx_xl_img1" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
-								<td width="29%" onclick="zksq_xl(2,120)"><span class="STYLE3" id="dc_xl_002" style="/* color: rgb(255, 95, 73); */">默认排序</span><img id="cx_xl_img2" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
-								<td width="29%" onclick="zksq_xl(3,287)"><span class="STYLE3" id="dc_xl_003" style="/* color: rgb(255, 95, 73); */">价格筛选</span><img id="cx_xl_img3" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
-								<td width="13%" onclick="gzcode();"><img id="cx_xl_img4" src="../page/images/spike_032.png" width="17" height="17" class="lm_img_002"><div class="Fill_005"></div></td>
-							</tr>
+						<tr align="center" valign="middle">
+							<td width="29%" onclick="zksq_xl(1,320)"><span class="STYLE3" id="dc_xl_001" style="/* color: rgb(255, 95, 73); */">全部分类</span><img id="cx_xl_img1" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
+							<td width="29%" onclick="zksq_xl(2,120)"><span class="STYLE3" id="dc_xl_002" style="/* color: rgb(255, 95, 73); */">默认排序</span><img id="cx_xl_img2" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
+							<td width="29%" onclick="zksq_xl(3,287)"><span class="STYLE3" id="dc_xl_003" style="/* color: rgb(255, 95, 73); */">价格筛选</span><img id="cx_xl_img3" src="../page/images/spike_030.png" width="12" height="7" class="lm_img_001"><div class="Fill_004"></div></td>
+							<td width="13%" onclick="gzcode();"><img id="cx_xl_img4" src="../page/images/spike_032.png" width="17" height="17" class="lm_img_002"><div class="Fill_005"></div></td>
+						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -715,7 +707,7 @@
 			<div id="nb-menu" style="padding-bottom:3px">
 				<ul class="nb-ul">
 					<li class="nb-relative ">
-						<a href="${actionPath}/manage/tbkItems.do" class="link-hover"></a>
+						<a href="${actionPath}/manage/index.do" class="link-hover"></a>
 						<div class="menu-inside" style="height:38px;">
 							<i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/scsy.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
 							<div class="font-div" style="padding-top:0px;margin-bottom:3px;">商城首页</div>
@@ -784,7 +776,7 @@
     var operType = "";
     var pageNo = 1;
     var gotype = 1;//定义排序规则
-	var jiage = "up";//默认降序
+    var jiage = "up";//默认降序
     var minfee =  $('#minfee').val(); //最高价格
     var maxfee =  $('#maxfee').val(); //最低价格
     if(!typename){typename='moren';}//默认排序
@@ -821,7 +813,7 @@
         typename =  divdat;
         if("moren"==typename){
             gotype = 1;
-		}
+        }
         if("ishot"==typename){
             gotype = 2;
         }
@@ -875,8 +867,12 @@
 
 </script>
 <script>
-    $('#span_001').bind("click",function(){
-		get_list();
+    $(function(){
+        $(window).scroll(function () {
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 10) {
+                get_list();
+            }
+        });
     });
 </script>
 <!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
@@ -884,22 +880,20 @@
 <script src="../page/js/dropload.js"></script>
 <script>
     $(function(){
-        $('#list_more').dropload({
-            scrollArea : window,
-            loadDownFn : function(me){
+        $(window).scroll(function () {
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 10) {
                 get_list();
-                me.resetload();
             }
         });
     });
 </script>
 <script>
-	//页面加载时获取商品列表
-	$(function () {
-		get_list();
+    //页面加载时获取商品列表
+    $(function () {
+        get_list();
     })
 
-	function get_list() {
+    function get_list() {
         $('#loadingbar3').show();
         //获取商品类型
         var itemType = document.getElementById("titleId").name;
@@ -924,10 +918,10 @@
                             "<div class='list-price buy'><span class='price-new'>" +
                             "<i class='i-baoyou'>抢购</i>" +
                             "<i class='i-quan'>券"+item.couponAmount+"元</i>" +
-                            "</span><span class='good-btn' style='color:#999'>销量"+item.totalNum+"</span></div>" +
+                            "</span><span class='good-btn' style='color:#999'>销量"+item.biz30day+"</span></div>" +
                             "<div class='list-price buy'><span class='price-new fs12'>" +
-                            "<span style='text-decoration: line-through;color: rgba(171, 171, 171, 1);'>￥"+item.reservePrice+"</span> 折后"+item.zkPrice+"<i>元</i>" +
-                            "</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
+                            "<span style='text-decoration: line-through;color: rgba(171, 171, 171, 1);'>￥"+item.zkPrice+"</span> 券后"+(item.zkPrice-item.couponAmount).toFixed(2)+"<i>元</i>" +
+                            "</span><span class='.buy .price-new' style='float: right;color: #FE4E4E;font-size: 12px;'>返"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
                             "<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">领券</a></div></div></div><div class='btn-l'>" +
                             "<div class='btn-wai'><div class='btn-nei2'><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">详情</a></div>" +
                             "</div></div></div>"
@@ -936,14 +930,15 @@
                 }
                 pageNo++;
             },
+            error: function(xhr, type){
+                // 即使加载出错，隐藏加载框
+                setTimeout("$('.loadingbar3').hide();",1000);
+            }
         });
         event.stopPropagation();    //  阻止事件冒泡
         setTimeout("$('.loadingbar3').hide();",1000);
     }
 </script>
-<%--<script type="text/javascript" src="../page/itemList/swipeSlide.min.js"></script>
-<script type="text/javascript" src="../page/itemList/jp.plus.js"></script>
-<script src="../page/itemList/volist.js"></script>--%>
 <script>
     $(document).ready(function(){
         $('#search').css('width',$('.app').width());
@@ -956,8 +951,6 @@
     });
 </script>
 <script>
-    var pageH = $(document.body).height(); //页面总高度
-    var scrollT = $(window).scrollTop(); //滚动条top
     var dc_xl=0;
     function zksq_xl(type,value){
         if(dc_xl!=type){
@@ -1008,52 +1001,6 @@
         dc_xl=0;
     }
 </script>
-<%--<script>
-	var ckua = navigator.userAgent.toLowerCase();
-	if (ckua.match(/iphone/i) == "iphone"){
-	    if(/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)){
-	        console.log('X');
-	        $("#nb-menu").attr('style','padding-bottom:30px');
-	    }
-	}
-</script>--%>
-<%--<script>
-    var swiper2 = new Swiper('.swiper2', {
-        slidesPerView: 'auto',
-        paginationClickable: true,
-        freeMode: true,
-        autoplay:3000,
-
-    });
-</script>--%>
-<%--<script>
-    function nopic(n_iid){
-        $.ajax({
-            url: "https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?&api=mtop.taobao.detail.getdetail&v=6.0&ttid=2013%40taobao_h5_1.0.0&type=jsonp&dataType=jsonp&data=%7B%22itemNumId%22%3A%22" + n_iid + "%22%7D",
-            dataType: 'jsonp',
-            jsonp: 'callback',
-            success: function (result) {
-                var add_image = "http:" + result.data.item.images[1];
-                var item_image = add_image + '_200x200.jpg';
-                $('.n_'+n_iid).attr('src', item_image);
-            }
-        })
-    }
-</script>--%>
-<%--<script>
-    function cknopic(){
-        $(".nopic").each(function(){
-            var newnopicid = $(this).attr('data-id');
-            nopic(newnopicid);
-        });
-    }
-</script>
-
-<script>
-    function closenb(){
-        $('.bigautocomplete-layout').fadeOut(300);
-    }
-</script>--%>
 <script>
     var t = setInterval(function(){
         $('#search').css('width',$('.app').width());
@@ -1068,7 +1015,7 @@
         $('.fq-discount a').css('font-size','13px');
     },40);
 </script>
-<%--<script type="text/javascript">
+<script type="text/javascript">
     document.getElementById("search").style.display = "none";
     window.addEventListener("scroll", function (event) {
         if (document.body.scrollTop > 500) {
@@ -1083,36 +1030,12 @@
             $('#search').fadeOut(500);
         }
     });
-</script>--%>
+</script>
 <script>
     function gotop(){
         setTimeout('$("html,body").animate({scrollTop:$("body").offset().top},500);',500);
         $(".go-top").addClass("top-button-hide").removeClass("top-button-show");
     }
 </script>
-<%--<script>
-	$(function () {
-		showloading();
-		var page;
-		if(!isNaN($("#list_box").attr("page"))) {
-			page = $("#list_box").attr("page");
-		} else {
-			page = 1;
-			get_list(page);
-		}
-		var lock = true;
-		$(window).scroll(function () {
-			if ($(document).height() - $(this).scrollTop() - $(this).height() < 10) {
-				if (lock) {
-					lock = false;
-					page++;
-					if (get_list(page)) {
-						lock = true;
-					}
-				}
-			}
-		});
-	});
-</script>--%>
 </body>
 </html>

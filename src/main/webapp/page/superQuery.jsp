@@ -23,14 +23,6 @@
             alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
         }
     }
-    window.sysinfo = {
-        'uniacid': '4',		'acid': '4','openid': 'oBkOmv6ChJiWncgelJ19ccf1KrwU',				'siteroot': 'http://wx.sskk88.cn/',
-        'siteurl': 'http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbkquan&shopid=0&time=1521474913',
-        'attachurl': 'http://wx.sskk88.cn/attachment/',
-        'attachurl_local': 'http://wx.sskk88.cn/attachment/',
-        'attachurl_remote': '',
-        'MODULE_URL': 'http://wx.sskk88.cn/addons/bsht_tbkquan/',		'cookie' : {'pre': '2d72_'}
-    };
     // jssdk config 对象
     jssdkconfig = {"appId":"wx2197a8ff9847ca8a","nonceStr":"RL9K5K7XI3AL2KK5","timestamp":"1521474913","signature":"6aef242b3b3c405a3539d9842adfd6998de62ba4"} || {};
     // 是否启用调试
@@ -436,7 +428,7 @@
                 <div class="fq-super-slider am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:160, itemMargin: 5,animationSpeed:400, slideshow: true,playAfterPaused: 6000}">
                     <ul class="am-slides">
                      <li>
-                         <a class="fq-super-goods am-text-left" href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=show_api&m=bsht_tbk&iid=525729431977&yj=2.684&tit=5rSX6KGj6KKL5oqk5rSX6KKL57uG572R5aWX6KOF5rSX6KGj5pyN5YaF6KGj5paH6IO455qE5rSX5oqk6KKL5aSn5Y_b35rSX6KGj5py65LiT55So572R6KKL&wenan=44CQ5aSn5Y_b3K_bS4reWPtyvlsI_alj7cr6L_b35L2g5Y_b377yMNOS7tuWll_bOAkeWKoOWOmumdouaWme_b8jOe7j_bS5heiAkOeUqO_b8jOmYsue8oOe7lemYsuWPmOW9ou_b8jOe7huiHtOe9kemdou_b8jOWRteaKpOS9oOeahOWunei0neiho_beJqe_b8jOaCqOeahOiho_beJqea0l_baKpOS4k_bWutu_b8jOWPpumAgeS4pOS4qua0l_biho_beQg_b_b8gQ_c_c&pic=http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg&fee1=11.80&fee2=8.80&qfee=3&fl=0&isdx=&shopid=0&isnb=1&maijia_id=105046306&isnice=2&stype=5&shopyuji=&hdk=1&actid=0cb8d2f129934786a2c671040f4a910b&vid=50069116160&q_yl=49050&q_zl=50000&qcid=10&istm=1">
+                         <a class="fq-super-goods am-text-left" href="">
                             <img src="http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg_200x200.jpg" />
                             <div class="fq-super-messages am-padding-xs">
                                 <span class="fq-super-sale am-text-xs">月销30002</span>
@@ -452,43 +444,44 @@
             <div id="nb-menu" style="padding-bottom:3px;">
                 <ul class="nb-ul">
                     <li class="nb-relative ">
-                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=index&m=bsht_tbk" class="link-hover"></a>
+                        <a href="${actionPath}/manage/index.do" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
-                            <i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/p2q4h61bQ467bNqNdZDh2U47bN3sS3.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/scsy.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                             <div class="font-div" style="padding-top:0px;margin-bottom:3px;">商城首页</div>
                         </div>
                     </li>
                     <li class="nb-relative ">
-                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=50&cate_id=78" class="link-hover"></a>
+                        <a href="${actionPath}/manage/tbkItemsByImg.do?operType=3" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
-                            <i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/Kz180REfe55fBlL1UAR888er01NvFV.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/nz.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                             <div class="font-div" style="padding-top:0px;margin-bottom:3px;">特惠女装</div>
                         </div>
                     </li>
+
                     <li class="nb-relative ">
-                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=minifee&m=bsht_tbk&minfee=0&maxfee=20" class="link-hover"></a>
+                        <a href="${actionPath}/manage/tbkItemsByImg.do?operType=2" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
-                            <i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/fF7RT6U62EOB1pO7FUnpN2e6UeAAea.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/zb.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                             <div class="font-div" style="padding-top:0px;margin-bottom:3px;">19.9封顶</div>
                         </div>
                     </li>
+
                     <li class="nb-relative ">
-                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=so&m=bsht_tbk" class="link-hover"></a>
+                        <a href="${actionPath}/manage/superQuery.do" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
-                            <i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/SJSsrNaAAS6sjnzujh82js3SrxiStL.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/ss.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                             <div class="font-div" style="padding-top:0px;margin-bottom:3px;">全网搜索</div>
                         </div>
                     </li>
+
                     <li class="nb-relative ">
-                        <a href="http://wx.sskk88.cn/app/index.php?i=4&c=entry&do=uc&m=bsht_tbkdl" class="link-hover"></a>
+                        <a href="" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
-                            <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/iwFHPz6Pkjn1A1wPeFPPp6H6z66C4p.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                            <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/huiyuan.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                             <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
                         </div>
                     </li>
-               </ul>
-            </div>
-            <div style="height:50px"></div>
+                </ul>
         </div>
     </div>
 <!--今日优选-->

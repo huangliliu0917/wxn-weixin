@@ -11,6 +11,7 @@ import com.taobao.api.request.TbkTpwdCreateRequest;
 import com.taobao.api.response.TbkDgItemCouponGetResponse;
 import com.taobao.api.response.TbkItemGetResponse;
 import com.taobao.api.response.TbkTpwdCreateResponse;
+import com.wxn.weixin.commons.Commons;
 import com.wxn.weixin.dal.mapper.TbkItemDetailMapper;
 import com.wxn.weixin.dal.mapper.TbkItemMapper;
 import com.wxn.weixin.dal.mapper.TbkItemSuperMapper;
@@ -59,22 +60,18 @@ public class TaoBaoManager {
     }
 
     /**
-     * 获取优惠券详细信息
-     * @param url
-     * @param appkey
-     * @param secret
-     * @param tbkCoupon
+     * 获取淘口令
+     * @param token
      * @return
      * @throws ApiException
      */
-    public String getTbkCouponDetail(String url,String appkey, String secret,
-                                                                   TbkDgItemCouponGetResponse.TbkCoupon tbkCoupon)throws ApiException {
+    public String getTbkCouponDetail(TbkItemDetailDO token)throws ApiException {
         String tbkCode = "";
-        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TaobaoClient client = new DefaultTaobaoClient(Commons.TBK_URL,Commons.APPKEY,Commons.SECRET);
         TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
-        req.setText(tbkCoupon.getTitle());
-        req.setUrl(tbkCoupon.getCouponClickUrl());
-        req.setLogo(tbkCoupon.getPictUrl());
+        req.setText(token.getTitle());
+        req.setUrl(token.getShortLinkUrl());
+        req.setLogo(token.getPictUrl());
         TbkTpwdCreateResponse rsp = client.execute(req);
         if(null == rsp.getErrorCode()){
             tbkCode = rsp.getData().getModel();

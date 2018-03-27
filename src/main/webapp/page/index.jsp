@@ -69,6 +69,8 @@
             }
         }
 		.salse li h2{ font-size: .30rem; color: #858585; height: 18px;padding: 0 .1rem; overflow: hidden;line-height: .4rem; margin-bottom: .1rem;}
+		.salse .infor1 span{ color: #ff3334; display: block; float: right;line-height: 2;font-size: .25rem;}
+		.salse .infor1 em{ font-style: normal; color: #ff3334;line-height: 2; font-size: .25rem;}
     </style>
 </head>
 <body>
@@ -153,26 +155,13 @@
 	<span class="text">精品推荐</span>
 </div>
 <ul class="salse" id="indexUl">
-	<c:if test="${not empty tbkItems}">
-		<c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
-			<li>
-				<a href="${actionPath}/manage/tbkItemDetail.do?itemId=${item.auctionId}">
-					<img src="${item.pictUrl}" style="height: 150px"/>
-					<h2>${item.title}</h2>
-					<div class="infor">
-						<em size="1">折后:${item.zkPrice}</em>
-						<span size="1">已售:${item.totalNum}</span>
-					</div>
-				</a>
-			</li>
-		</c:forEach>
-	</c:if>
+
 </ul>
 <div class="flush"></div>
 <div class="h50"></div>
 <ul class="footer">
 	<li>
-		<a href="${actionPath}/manage/tbkItems.do">
+		<a href="${actionPath}/manage/index.do">
 			<img src="${contextPath}/images/index.jpg" />
 			<p>首页</p>
 		</a>
@@ -200,8 +189,8 @@
 <script src="../page/js/jquery.min.js"></script>
 <script src="../page/js/dropload.js"></script>
 <script>
-    var pageNo=2;
-    var pageSize=50;
+    var pageNo=1;
+    var pageSize=30;
     var domain = "http://"+window.location.host;
 
     //绑定手机搜索按钮
@@ -213,50 +202,46 @@
         }
         if(title){window.location.href="../manage/skipItemListPage.do?title="+title;}
     });
-
     $(function(){
-        // dropload
-        $('.flush').dropload({
-            scrollArea : window,
-            loadDownFn : function(me){
-                pageNo++;
-                $.ajax({
-                    url:""+"/manage/loadMoreItems.do",
-                    async:false,
-                    data: {'pageNo':pageNo,'pageSize':pageSize},
-                    dataType:'json',
-                    type:"post",
-                    success:function(data){
-                        var arrLen = data.length;
-                        if(arrLen > 0){
-                            $.each(data,function(index,item){
-                                var createLi = document.createElement("li");
-                                createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">\n" +
-                                    "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
-                                    "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
-                                    "\t\t\t\t\t<div class='infor'>\n" +
-                                    "\t\t\t\t\t\t<em size='1\'>券后:"+item.zkPrice+"</em>\n" +
-                                    "\t\t\t\t\t\t<span size='1'>已售:"+item.totalNum+"</span>\n" +
-                                    "\t\t\t\t\t</div>\n" +
-                                    "\t\t\t\t</a>"
-                                document.getElementById("indexUl").appendChild(createLi);
-                            });
-						}else{
-                            // 锁定
-                            me.lock();
-                            // 无数据
-                            me.noData();
-                        }
-						me.resetload();
-                    },
-                    error: function(xhr, type){
-                        // 即使加载出错，也得重置
-                        me.resetload();
-                    }
-                });
+        $(window).scroll(function () {
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 10) {
+                get_list();
             }
         });
     });
+    $(function () {
+		get_list();
+    })
+
+	function get_list() {
+        pageNo++;
+        $.ajax({
+            url:""+"/manage/loadMoreItems.do",
+            async:false,
+            data: {'pageNo':pageNo,'pageSize':pageSize},
+            dataType:'json',
+            type:"post",
+            success:function(data){
+                var arrLen = data.length;
+                if(arrLen > 0){
+                    $.each(data,function(index,item){
+                        var createLi = document.createElement("li");
+                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">\n" +
+                            "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
+                            "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
+                            "\t\t\t\t\t<div class='infor'>\n" +
+                            "\t\t\t\t\t\t<em size='1\'>现价￥"+item.zkPrice+"</em>\n" +
+                            "\t\t\t\t\t\t<span size='1'>已售￥"+item.biz30day+"件</span>\n" +
+                            "\t\t\t\t\t</div><hr style='BORDER-TOP-STYLE: dotted; color: #ddd;'>" +
+                            "<div class='infor1'><em size='1'>券后￥"+(item.zkPrice-item.couponAmount).toFixed(2)+"</em>" +
+                            "<span size='1'>返￥"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"元</span></div>" +
+                            "\t\t\t\t</a>"
+                        document.getElementById("indexUl").appendChild(createLi);
+                    });
+                }
+            },
+        });
+    }
 </script>
 </body>
 </html>

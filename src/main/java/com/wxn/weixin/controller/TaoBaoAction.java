@@ -32,46 +32,13 @@ public class TaoBaoAction extends BaseAction{
     private TbkSuperQueryManager tbkSuperQueryManager;
 
     /**
-     * 查询商品列表
-     * @param model
+     * 优惠券入口
      * @return
      */
-    @RequestMapping("/manage/tbkItems.do")
-    public String getItems(Model model,SuperQueryPo superQuery){
-        try {
-            log.info("查询商品列表,param:{}",superQuery.toString());
-            List<TbkItemSuperDO> tbkItems = taoBaoManager.getItemsByPo(superQuery);
-            model.addAttribute("tbkItems",tbkItems);
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
-        }
+    @RequestMapping("/manage/index.do")
+    public String getItems(){
         return "page/index";
     }
-
-    /**
-     * 查询商品详情
-     * @param model
-     * @param tbkItemDetailDO
-     * @return
-     */
-    @RequestMapping("/manage/tbkItemDetail.do")
-    public String getTbkItemDetail(Model model,TbkItemDetailDO tbkItemDetailDO){
-        log.info("获取商品详情,tbkItemDetail{}",tbkItemDetailDO.toString());
-        try {
-            TbkItemDetailDO tbkItemDetail = taoBaoManager.getTbkItemDetail(tbkItemDetailDO);
-            //查找相似产品
-            List<TbkItemSuperDO> tbkItems = taoBaoManager.getSimilarityItems(tbkItemDetail);
-
-            String[] imgs = tbkItemDetail.getSmallImages().split(",");
-            model.addAttribute("tbkitemdetail",tbkItemDetail);
-            model.addAttribute("tbkItems",tbkItems);
-            model.addAttribute("imgs",imgs);
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
-        }
-        return "page/detail";
-    }
-
     /**
      * 通过点击图标，查询相应商品列表
      * @param model
@@ -138,47 +105,31 @@ public class TaoBaoAction extends BaseAction{
         List<TbkItemSuperDO> tbkItems = taoBaoManager.getItems(superQuery );
         sendMessages(response, JSON.toJSONString(tbkItems));
     }
-
     /**
      * 查询商品详情
      * @param model
-     * @param tbkCoupon
+     * @param tbkItemDetailDO
      * @return
      */
-    @RequestMapping("/manage/detail")
-    public String getTbkCouponDetail(Model model, TbkDgItemCouponGetResponse.TbkCoupon tbkCoupon){
+    @RequestMapping("/manage/tbkItemDetail.do")
+    public String getTbkItemDetail(Model model,TbkItemDetailDO tbkItemDetailDO){
+        log.info("获取商品详情,tbkItemDetail{}",tbkItemDetailDO.toString());
         try {
-            String tbkCode = taoBaoManager.getTbkCouponDetail(Commons.TBK_URL,Commons.APPKEY,Commons.SECRET,tbkCoupon);
-            String title = null;
-            //查找相似产品
-            if(tbkCoupon.getTitle().length()>10){
-                title = tbkCoupon.getTitle().substring(0,9);
-            }
-            List<TbkDgItemCouponGetResponse.TbkCoupon> tbkCoupons = taoBaoManager.getTbkCoupon(Commons.TBK_URL,Commons.APPKEY,Commons.SECRET,title,1l);
+            TbkItemDetailDO tbkItemDetail = taoBaoManager.getTbkItemDetail(tbkItemDetailDO);
+            if(null == tbkItemDetail){//站内没有此商品，需调用超级搜索接口将信息同步到站内
 
-            //跳转之前对图文详情进行转换
-            List<String> list = new ArrayList<String>();
-            for(String item : tbkCoupon.getSmallImages()){
-                if(item.contains("[")){
-                    int num = item.indexOf("[");
-                    String str2=String.valueOf(item.charAt(num));
-                    item=item.replace(str2,"");
-                    list.add(item);
-                }else if(item.contains("]")){
-                    int num = item.indexOf("]");
-                    String str2=String.valueOf(item.charAt(num));
-                    item=item.replace(str2,"");
-                    list.add(item);
-                }else {
-                    list.add(item);
-                }
             }
-            model.addAttribute("tbkoCupon",tbkCoupon);
-            model.addAttribute("tbkCode",tbkCode);
-            model.addAttribute("imgs",list);
-            model.addAttribute("tbkCouponList",tbkCoupons);
-        } catch (ApiException e) {
-            log.error(e.getErrMsg(),e);
+          /*  //查找相似产品
+            List<TbkItemSuperDO> tbkItems = taoBaoManager.getSimilarityItems(tbkItemDetail);*/
+
+            //调用淘口令接口
+            String token = taoBaoManager.getTbkCouponDetail(tbkItemDetail);
+            String[] imgs = tbkItemDetail.getSmallImages().split(",");
+            model.addAttribute("tbkitemdetail",tbkItemDetail);
+            model.addAttribute("token",token);
+            model.addAttribute("imgs",imgs);
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
         }
         return "page/detail";
     }

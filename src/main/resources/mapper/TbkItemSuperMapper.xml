@@ -35,7 +35,7 @@
         <result column="auctionUrl" jdbcType="VARCHAR" property="auctionUrl" />
         <result column="couponLeftCount" jdbcType="DECIMAL" property="couponLeftCount" />
         <result column="sameItemPid" jdbcType="VARCHAR" property="sameItemPid" />
-        <result column="biz30day" jdbcType="VARCHAR" property="biz30day" />
+        <result column="biz30day" jdbcType="DECIMAL" property="biz30day" />
         <result column="hasUmpBonus" jdbcType="VARCHAR" property="hasUmpBonus" />
         <result column="isBizActivity" jdbcType="VARCHAR" property="isBizActivity" />
         <result column="couponStartFee" jdbcType="VARCHAR" property="couponStartFee" />
@@ -62,13 +62,16 @@
           t.pictUrl,
           t.title,
           t.reservePrice,
-          t.totalNum,
+          t.biz30day,
           t.zkPrice,
           t.couponAmount,
-          t.tkCommonRate
+          t.tkCommonRate,
+          t.isCode
         from
           t_tbk_super_item t
         where 1=1
+        and t.isCode = '1'
+        and t.isShow = '1'
         <if test="title != null and title != ''">
             and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
         </if>
@@ -97,13 +100,13 @@
             and t.itemType = '1'
         </if>
         <if test='gotype != null and gotype == "1" and operType != "3"'>
-            order by t.zkPrice,t.totalNum,t.couponAmount desc
+            order by t.zkPrice,t.biz30day,t.couponAmount desc
         </if>
         <if test='gotype != null and gotype == "2"'>
             order by t.tkCommonRate desc
         </if>
         <if test='(gotype != null and gotype == "3") or operType == "3"'>
-            order by t.totalNum desc
+            order by t.biz30day desc
         </if>
         <if test='gotype != null and gotype == "4" and jiage == "up"'>
             order by t.zkPrice asc
@@ -119,77 +122,16 @@
         t.pictUrl,
         t.title,
         t.reservePrice,
-        t.totalNum,
+        t.biz30day,
         t.zkPrice,
         t.couponAmount,
-        t.tkCommonRate
+        t.tkCommonRate,
+        t.isCode
         from
         t_tbk_super_item t
         where 1=1
-        <if test="title != null and title != ''">
-            and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
-        </if>
-        <if test='onlyq != null and onlyq == "0"'>
-            and t.couponTotalCount <![CDATA[<>]]> 0
-        </if>
-        <if test='gotype != null and gotype == "1"'>
-            order by t.zkPrice,t.totalNum,t.couponAmount desc
-        </if>
+            and t.isCode = '1'
+            and t.isShow = '1'
+            order by t.zkPrice,t.biz30day desc
     </select>
-
-
-    <insert id="insert" parameterType="com.wxn.weixin.pojo.TbkItemSuperDO">
-        insert into t_tbk_super_item (
-          tkRate,
-          leafCatId,
-          couponEffectiveStartTime,
-          couponEffectiveEndTime,
-          couponAmount,
-          sellerId,
-          couponInfo,
-          couponTotalCount,
-          userType,
-          reservePrice,
-          tkCommonRate,
-          title,
-          nick,
-          auctionUrl,
-          pictUrl,
-          auctionId,
-          zkPrice,
-          totalNum,
-          itemType
-          )
-        VALUES (
-            #{tkRate,jdbcType=DECIMAL},
-            #{leafCatId,jdbcType=VARCHAR},
-            #{couponEffectiveStartTime,jdbcType=VARCHAR},
-            #{couponEffectiveEndTime,jdbcType=VARCHAR},
-            #{couponAmount,jdbcType=DECIMAL},
-            #{sellerId,jdbcType=VARCHAR},
-            #{couponInfo,jdbcType=VARCHAR},
-            #{couponTotalCount,jdbcType=DECIMAL},
-            #{userType,jdbcType=VARCHAR},
-            #{reservePrice,jdbcType=DECIMAL},
-            #{tkCommonRate,jdbcType=DECIMAL},
-            #{title,jdbcType=VARCHAR},
-            #{nick,jdbcType=VARCHAR},
-            #{auctionUrl,jdbcType=VARCHAR},
-            #{pictUrl,jdbcType=VARCHAR},
-            #{auctionId,jdbcType=VARCHAR},
-            #{zkPrice,jdbcType=DECIMAL},
-            #{totalNum,jdbcType=DECIMAL},
-            #{itemType,jdbcType=VARCHAR}
-        )
-    </insert>
-
-    <!--口令转换后，更改口令状态-->
-    <update id="updateTbkItemByItemId" parameterType="java.lang.String">
-        UPDATE t_tbk_super_item t SET
-          t.isCode = '1',
-          t.isShow = '1'
-        where t.isCode = '2'
-        and t.isShow = '2'
-        and   t.auctionId = #{auctionId,jdbcType=VARCHAR}
-    </update>
 </mapper>

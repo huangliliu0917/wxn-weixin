@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="${contextPath}/css/style.css" type="text/css"/>
     <link rel="stylesheet" href="${contextPath}/css/main.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../page/js/jquery.min.js"></script>
+    <script src="../page/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         !function (J) {
             function H() {
@@ -57,7 +57,7 @@
             position: fixed;
             width: 100%;
             height: 1rem;
-            bottom: -8px;
+            bottom: -9px;
             left: 0;
             right: 0;
             background: #eee;
@@ -75,18 +75,18 @@
     </ul>
 </div>--%>
 <div class="nbleft" style="position: fixed; top: 15px; z-index: 99999; width: 100%; max-width: 53.75px; margin: 0px auto; left: 0px; right: 376.25px;">
-    <a href="javascript:void(0);" onclick="window.location.href = document.referrer;">
+    <a href="javascript:void(0);" onclick="window.location.href=document.referrer;">
         <img src="../page/images/return.png" style="width:35px;float:left;margin-left:15px;">
     </a>
 </div>
 <div class="nbright" style="position: fixed; top: 15px; z-index: 99999; width: 100%; max-width: 53.75px; margin: 0px auto; left: 300px; right: 0px;">
-    <a href="${actionPath}/manage/tbkItems.do">
+    <a href="${actionPath}/manage/index.do">
         <img src="../page/images/rehome.png" style="width:35px;float:right;margin-right:15px;">
     </a>
 </div>
 <div class="h50"></div>
 <div class="banner" style="margin-top: -57px;">
-    <img src="${tbkitemdetail.pictUrl}"/>
+    <img id="loadUrl" src="${tbkitemdetail.pictUrl}"/>
 </div>
 <div class="detail" style="margin-top:2px;">
     <p style="color: rgb(24, 24, 24); line-height: 0.5rem; text-indent: 0.24rem; font-size: 15px;color:#282828;">${tbkitemdetail.title}</p>
@@ -98,7 +98,7 @@
 <div class="detail-content"
      style="border: dashed 1px #FF0000;margin-right:15px;margin-left:15px; margin-bottom:8px;margin-top:5px;">
     <p id="tbkText" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">
-        复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${tbkitemdetail.taoToken}</p>
+        复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${token}</p>
 </div>
 <div class="detail-content" style="margin-right:100px;margin-left:110px; margin-bottom:2px;margin-top:5px;">
     <button id="updateText" class="buttonRed" onclick="cp(document.getElementById('tbkText'))">一键复制</button>
@@ -128,7 +128,7 @@
         <c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
             <li>
                 <a href="${actionPath}/manage/detail?">
-                    <img id="loadUrl" src="${item.pictUrl}"/>
+                    <img src="${item.pictUrl}"/>
                     <h2>${item.title}</h2>
                     <div class="infor">
                         <em size="1">折后:${item.zkPrice}</em>
@@ -166,7 +166,7 @@
 <div class="h50"></div>
 <ul class="detail-footer">
     <li>
-        <a href="${actionPath}/manage/tbkItems.do">
+        <a href="${actionPath}/manage/index.do">
             <img src="${contextPath}/images/index.jpg"/>
             <p>首页</p>
         </a>
@@ -186,7 +186,7 @@
         var imgUrl = document.getElementById("loadUrl").src;
         document.getElementById("imgurl1").src=imgUrl;
 
-        var text = document.getElementById("modalText").innerHTML = document.getElementById("tbkText").innerHTML;
+        document.getElementById("modalText").innerHTML = document.getElementById("tbkText").innerHTML;
         // 执行一些动作...
         document.getElementById("modelButto").className = "modelButtonRed";
     })

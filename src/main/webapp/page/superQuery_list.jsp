@@ -26,14 +26,6 @@
                 alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
             }
         }
-        window.sysinfo = {
-            'uniacid': '4',		'acid': '4','openid': 'oBkOmv6ChJiWncgelJ19ccf1KrwU',				'siteroot': 'http://wx.sskk88.cn/',
-            'siteurl': 'http://wx.sskk88.cn/app/index.phpa?c=entry&i=4&m=bsht_tbkquan&do=so&itemid=&sid=&itemfee=&itempic=&nb_shopid=0&keyword=%E8%A2%9C%E5%AD%90&shopid=0&actid=&openid=',
-            'attachurl': 'http://wx.sskk88.cn/attachment/',
-            'attachurl_local': 'http://wx.sskk88.cn/attachment/',
-            'attachurl_remote': '',
-            'MODULE_URL': 'http://wx.sskk88.cn/addons/bsht_tbkquan/',		'cookie' : {'pre': '2d72_'}
-        };
         // jssdk config 对象
         jssdkconfig = {"appId":"wx2197a8ff9847ca8a","nonceStr":"lY6aCav8Y6zycYVf","timestamp":"1521474919","signature":"25ddac7e5af23294fca733be12eb6efb7d70ab4c"} || {};
         // 是否启用调试
@@ -478,7 +470,7 @@
 
                                 </div>
                             </div>
-                            <div class="waterfall-status-loading" style="display:none"><p><span class="loading-icon"></span><span class="loading-text">努力查询中...</span></p></div>
+                            <div class="waterfall-status-loading" style="display:none"><p><span class="loading-icon"></span><span id="tbk_apan" class="loading-text">努力查询中...</span></p></div>
                         </div>
                     </div>
                 </ul>
@@ -490,9 +482,9 @@
 <div id="nb-menu" style="padding-bottom:3px">
     <ul class="nb-ul">
         <li class="nb-relative ">
-            <a href="${actionPath}/manage/tbkItems.do" class="link-hover"></a>
+            <a href="${actionPath}/manage/index.do" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
-                <i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/p2q4h61bQ467bNqNdZDh2U47bN3sS3.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                <i id="nb_btn_11" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/scsy.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                 <div class="font-div" style="padding-top:0px;margin-bottom:3px;">商城首页</div>
             </div>
         </li>
@@ -500,7 +492,7 @@
         <li class="nb-relative ">
             <a href="${actionPath}/manage/tbkItemsByImg.do?operType=3" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
-                <i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/Kz180REfe55fBlL1UAR888er01NvFV.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                <i id="nb_btn_12" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/nz.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                 <div class="font-div" style="padding-top:0px;margin-bottom:3px;">特惠女装</div>
             </div>
         </li>
@@ -508,7 +500,7 @@
         <li class="nb-relative ">
             <a href="${actionPath}/manage/tbkItemsByImg.do?operType=2" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
-                <i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/fF7RT6U62EOB1pO7FUnpN2e6UeAAea.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                <i id="nb_btn_13" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/zb.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                 <div class="font-div" style="padding-top:0px;margin-bottom:3px;">19.9封顶</div>
             </div>
         </li>
@@ -516,7 +508,7 @@
         <li class="nb-relative ">
             <a href="${actionPath}/manage/superQuery.do" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
-                <i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/SJSsrNaAAS6sjnzujh82js3SrxiStL.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                <i id="nb_btn_14" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/ss.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                 <div class="font-div" style="padding-top:0px;margin-bottom:3px;">全网搜索</div>
             </div>
         </li>
@@ -524,7 +516,7 @@
         <li class="nb-relative ">
             <a href="" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
-                <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('http://wx.sskk88.cn/attachment/images/4/2017/07/iwFHPz6Pkjn1A1wPeFPPp6H6z66C4p.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
+                <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/huiyuan.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
                 <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
             </div>
         </li>
@@ -615,51 +607,6 @@
         }
         get_list();
     });
-    function get_list(){
-        $('#loadingbar3').show();
-        $('.layui-flow-more').hide();
-        $('.waterfall-status-loading').show();
-        var sonlyq = $('#onlyq').html();//是否查询有券商品 0：是 1：否
-        var sjiage = $('#jiage').html();//按价格排序
-        var title = document.getElementById("J_search_box_input").value;//查询优惠券条件
-        var issite = $("#nbsite").html();//是否查询站内优惠券 0：是 1：否
-        var thisid = $("#gotype").html();//排序规则
-        $.ajax({
-            url:""+"/manage/superQuery_list.do",
-            async:false,
-            data: {'pageNo':pageNo,'title':title,'gotype':thisid,'nbsite':issite,'onlyq':sonlyq,'jiage':sjiage},
-            dataType:'json',
-            type:"post",
-            success : function(data){
-                var arrLen = data.length;
-                if(arrLen > 0){
-                    $.each(data,function(index,item){
-                        var createLi = document.createElement("li");
-                        createLi.className="item-detail topdh";
-                        createLi.innerHTML+="<a href=''><div class='item-img'><img class='J_item_image' src='"+item.pictUrl+"'>" +
-                            "</div><div class='item-right'><span class='item-title'>"+item.title+"</span><div class='item-line'>" +
-                            "<span class='line-group'><span>在售价 ￥</span>" +
-                            "<span style='text-decoration:none;'>"+item.reservePrice+"</span></span><span class='line-group'>" +
-                            "<span>已售"+item.totalNum+"件</span></span></div><div class='item-line' style='margin-bottom: 0.2rem'>" +
-                            "<span class='line-group'><span>折后 </span><span style='margin-right: -0.05rem'>￥</span>" +
-                            "<span class='cl-dark' style='font-size: 0.35rem'>"+item.zkPrice+"</span></span></div>" +
-                            "<div class='item-line'><div class='line-group coupon-tag-wrap'><div class='coupon-tag'>券</div>" +
-                            "<div class='coupon-price'>"+item.couponAmount+"元</div></div></div><div class='item-handle'>" +
-                            "<img class='item-handle-img' src='../page/images/more.png'><div class='item-handle-text'>" +
-                            "<span style='font-size:0.24rem;color: #ff5500'>返 </span>" +
-                            "<span style='font-size:0.29rem;color: #ff5500'>"+Math.floor(item.tkCommonRate/2)+"元</span></div></div></div></a>"
-                        document.getElementById("inData").appendChild(createLi)
-                    });
-                }
-                pageNo++;
-            },
-            error: function(xhr, type){
-                // 即使加载出错，隐藏加载框
-                setTimeout("$('.loadingbar3').hide();",1000);
-            }
-        });
-        setTimeout("$('.loadingbar3').hide();",2000);
-    }
 </script>
 <script>
     function gotop(){
@@ -674,8 +621,8 @@
         }
     });
     $(function() {
-        $("#nb-menu").fadeIn(300);
         get_list();
+        $("#nb-menu").fadeIn(300);
         wx.config(jssdkconfig);
         wx.ready(function () {
             wx.hideAllNonBaseMenuItem();
@@ -689,15 +636,63 @@
 <script src="../page/js/jquery.min.js"></script>
 <script src="../page/js/dropload.js"></script>
 <script>
+    var domain = "http://"+window.location.host;
     $(function(){
-        $('#loadMoreItem').dropload({
-            scrollArea : window,
-            loadDownFn : function(me){
+        $(window).scroll(function () {
+            if ($(document).height() - $(this).scrollTop() - $(this).height() < 10) {
                 get_list();
-                me.resetload();
             }
         });
     });
+    function get_list(){
+        $('#loadingbar3').show();
+        $('.layui-flow-more').hide();
+        $('.waterfall-status-loading').show();
+        var sonlyq = $('#onlyq').html();//是否查询有券商品 0：是 1：否
+        var sjiage = $('#jiage').html();//按价格排序
+        var title = document.getElementById("J_search_box_input").value;//查询优惠券条件
+        var issite = $("#nbsite").html();//是否查询站内优惠券 0：是 1：否
+        var thisid = $("#gotype").html();//排序规则
+        $.ajax({
+            url:""+"/manage/superQuery_list.do",
+            async: false,
+            data: {'pageNo':pageNo,'title':title,'gotype':thisid,'nbsite':issite,'onlyq':sonlyq,'jiage':sjiage},
+            dataType:'json',
+            type:"post",
+            success : function(data){
+                var arrLen = data.length;
+                if(arrLen > 0){
+                    $.each(data,function(index,item){
+                        var createLi = document.createElement("li");
+                        createLi.className="item-detail topdh";
+                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+"><div class='item-img'><img class='J_item_image' src='"+item.pictUrl+"'>" +
+                            "</div><div class='item-right'><span class='item-title'>"+item.title+"</span><div class='item-line'>" +
+                            "<span class='line-group'><span>现价 ￥</span>" +
+                            "<span style='text-decoration:none;'>"+item.zkPrice+"</span></span><span class='line-group'>" +
+                            "<span>已售"+item.biz30day+"件</span></span></div><div class='item-line' style='margin-bottom: 0.2rem'>" +
+                            "<span class='line-group'><span>券后 </span><span style='margin-right: -0.05rem'>￥</span>" +
+                            "<span class='cl-dark' style='font-size: 0.35rem'>"+(item.zkPrice-item.couponAmount).toFixed(2)+"</span></span></div>" +
+                            "<div class='item-line'><div class='line-group coupon-tag-wrap'><div class='coupon-tag'>券</div>" +
+                            "<div class='coupon-price'>"+item.couponAmount+"元</div></div></div><div class='item-handle'>" +
+                            "<img class='item-handle-img' src='../page/images/more.png'><div class='item-handle-text'>" +
+                            "<span style='font-size:0.24rem;color: #ff5500'>返 </span>" +
+                            "<span style='font-size:0.29rem;color: #ff5500'>"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"元</span></div></div></div></a>"
+                        document.getElementById("inData").appendChild(createLi)
+                    });
+                }else{
+                    $("#tbk_apan").html('没有更多记录');
+                    $('.loadingbar3').hide();
+                    lock = false;
+                }
+                pageNo++;
+            },
+            error: function(xhr, type){
+                // 即使加载出错，隐藏加载框
+                setTimeout("$('.loadingbar3').hide();",1000);
+            }
+        });
+        setTimeout("$('.loadingbar3').hide();",2000);
+    }
 </script>
 <script>
     var ckua = navigator.userAgent.toLowerCase();

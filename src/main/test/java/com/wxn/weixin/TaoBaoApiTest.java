@@ -6,6 +6,7 @@ import com.taobao.api.TaobaoClient;
 import com.taobao.api.domain.NTbkItem;
 import com.taobao.api.request.*;
 import com.taobao.api.response.*;
+import com.wxn.weixin.commons.Commons;
 import com.wxn.weixin.pojo.HttpClientResponse;
 import com.wxn.weixin.utils.HttpClientUtils;
 import org.junit.Test;
@@ -102,7 +103,7 @@ public class TaoBaoApiTest {
 
     @Test
     public void getTaoKouLing3() throws ApiException{
-        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TaobaoClient client = new DefaultTaobaoClient(Commons.TBK_URL, Commons.APPKEY, Commons.SECRET);
         TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
         req.setText("长度大于5个字符");
         req.setUrl("https://s.click.taobao.com/bpKbFTw");

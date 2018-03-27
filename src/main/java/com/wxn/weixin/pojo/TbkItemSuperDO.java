@@ -108,7 +108,7 @@ public class TbkItemSuperDO extends Page{
     private String sameItemPid;
 
     @SerializedName("biz30day")
-    private String biz30day;
+    private int biz30day;
 
     @SerializedName("hasUmpBonus")
     private String hasUmpBonus;
