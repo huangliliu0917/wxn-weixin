@@ -4,19 +4,17 @@ import com.github.pagehelper.PageHelper;
 import com.taobao.api.ApiException;
 import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
-import com.taobao.api.domain.NTbkItem;
 import com.taobao.api.request.TbkDgItemCouponGetRequest;
-import com.taobao.api.request.TbkItemGetRequest;
 import com.taobao.api.request.TbkTpwdCreateRequest;
 import com.taobao.api.response.TbkDgItemCouponGetResponse;
-import com.taobao.api.response.TbkItemGetResponse;
 import com.taobao.api.response.TbkTpwdCreateResponse;
 import com.wxn.weixin.commons.Commons;
 import com.wxn.weixin.dal.mapper.TbkItemDetailMapper;
 import com.wxn.weixin.dal.mapper.TbkItemMapper;
 import com.wxn.weixin.dal.mapper.TbkItemSuperMapper;
-import com.wxn.weixin.dal.model.TbkItemDO;
+import com.wxn.weixin.dal.mapper.TbkMaterialOptionalMapper;
 import com.wxn.weixin.dal.model.TbkItemDetailDO;
+import com.wxn.weixin.dal.model.TbkMaterialOptionalDO;
 import com.wxn.weixin.pojo.SuperQueryPo;
 import com.wxn.weixin.pojo.TbkItemSuperDO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +32,8 @@ public class TaoBaoManager {
     private TbkItemDetailMapper tbkItemDetailMapper;
     @Autowired
     private TbkItemSuperMapper tbkItemSuperMapper;
+    @Autowired
+    private TbkMaterialOptionalMapper tbkMaterialOptionalMapper;
 
     /**
      *
@@ -65,13 +65,15 @@ public class TaoBaoManager {
      * @return
      * @throws ApiException
      */
-    public String getTbkCouponDetail(TbkItemDetailDO token)throws ApiException {
+    public String getTbkCouponDetail(TbkMaterialOptionalDO token)throws ApiException {
+        //如果是有券商品，手动拼接二合一链接
+        String tokenUrl = "https://uland.taobao.com/coupon/edetail?activityId="+token.getCoupon_id()+"&pid=mm_120912411_42970707_272988181&itemId="+token.getNum_iid()+"&src=pgy_pgyqf&dx=1";
         String tbkCode = "";
         TaobaoClient client = new DefaultTaobaoClient(Commons.TBK_URL,Commons.APPKEY,Commons.SECRET);
         TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
         req.setText(token.getTitle());
-        req.setUrl(token.getShortLinkUrl());
-        req.setLogo(token.getPictUrl());
+        req.setUrl(tokenUrl);
+        req.setLogo(token.getPict_url());
         TbkTpwdCreateResponse rsp = client.execute(req);
         if(null == rsp.getErrorCode()){
             tbkCode = rsp.getData().getModel();
@@ -104,12 +106,15 @@ public class TaoBaoManager {
     }
     /**
      * 查询商品详情
-     * @param tbkItemDetailDO
+     * @param item
      * @return
      */
-    public TbkItemDetailDO getTbkItemDetail(TbkItemDetailDO tbkItemDetailDO) {
-        return tbkItemDetailMapper.getItemDetail(tbkItemDetailDO);
+    public TbkMaterialOptionalDO getTbkItemDetail(TbkMaterialOptionalDO item) {
+        return tbkMaterialOptionalMapper.getItemById(item);
     }
+    /*public TbkItemDetailDO getTbkItemDetail(TbkItemDetailDO tbkItemDetailDO) {
+        return tbkItemDetailMapper.getItemDetail(tbkItemDetailDO);
+    }*/
 
     /**
      * 根据title,查找相似产品
@@ -127,11 +132,16 @@ public class TaoBaoManager {
      * @param superQuery
      * @return
      */
-    public List<TbkItemSuperDO> getItems(SuperQueryPo superQuery) {
+    public List<TbkMaterialOptionalDO> getItems(SuperQueryPo superQuery) {
+        //mybatis分页插件引入
+        PageHelper.startPage(superQuery.getPageNo(),superQuery.getPageSize());
+        return tbkMaterialOptionalMapper.getItems(superQuery);
+    }
+    /*public List<TbkItemSuperDO> getItems(SuperQueryPo superQuery) {
         //mybatis分页插件引入
         PageHelper.startPage(superQuery.getPageNo(),superQuery.getPageSize());
         return tbkItemSuperMapper.getItems(superQuery);
-    }
+    }*/
 
     /**
      * 查询商品列表
@@ -142,5 +152,15 @@ public class TaoBaoManager {
         //mybatis分页插件引入
         PageHelper.startPage(superQuery.getPageNo(),superQuery.getPageSize());
         return tbkItemSuperMapper.getItemsByPo(superQuery);
+    }
+
+    public List<TbkMaterialOptionalDO> getItemsToSuperQuery(SuperQueryPo superQuery) {
+        //mybatis分页插件引入
+        PageHelper.startPage(superQuery.getPageNo(),superQuery.getPageSize());
+        return tbkMaterialOptionalMapper.getItemsToSuperQuery(superQuery);
+    }
+
+    public List<TbkMaterialOptionalDO> getItemsBySuperQueryPage() {
+        return tbkMaterialOptionalMapper.getItemsBySuperQueryPage();
     }
 }

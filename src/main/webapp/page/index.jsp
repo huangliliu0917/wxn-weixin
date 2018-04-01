@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>美宁欢乐淘</title>
+    <title style="text-align: center">美宁欢乐淘</title>
     <link rel="stylesheet" href="${contextPath}/css/style.css" type="text/css" />
     <link rel="stylesheet" href="${contextPath}/css/main.css" type="text/css" media="screen" charset="utf-8" />
 	<meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
@@ -97,57 +97,57 @@
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=2">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=9">
 			<img src="${contextPath}/images/boy.png" />
 			<p>男装</p>
 		</a>
 	</li>
 	<li>
-		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=3">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=10">
 			<img src="${contextPath}/images/4.png" />
 			<p>内衣</p>
 		</a>
 	</li>
     <li>
-        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=4">
+        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=2">
             <img src="${contextPath}/images/5.png" />
             <p>母婴</p>
         </a>
     </li>
 	<li>
-		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=5">
+		<a href="${actionPath}/manage/tbkItemsByImg.do?itemType=3">
 			<img src="${contextPath}/images/6.png" />
 			<p>化妆品</p>
 		</a>
 	</li>
     <li>
-        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=6">
+        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=4">
             <img src="${contextPath}/images/7.png" />
             <p>居家</p>
         </a>
     </li>
     <li>
-        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=7">
+        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=5">
             <img src="${contextPath}/images/3.png" />
-            <p>鞋包</p>
+            <p>鞋包配饰</p>
+        </a>
+    </li>
+    <li>
+        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=6">
+            <img src="${contextPath}/images/10.png" />
+            <p>美食</p>
+        </a>
+    </li>
+    <li>
+        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=7">
+            <img src="${contextPath}/images/9.png" />
+            <p>文体车品</p>
         </a>
     </li>
     <li>
         <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=8">
             <img src="${contextPath}/images/10.png" />
-            <p>配饰</p>
-        </a>
-    </li>
-    <li>
-        <a href="${actionPath}/manage/tbkItemsByImg.do?itemType=9">
-            <img src="${contextPath}/images/9.png" />
-            <p>车品</p>
-        </a>
-    </li>
-    <li>
-        <a href="${actionPath}/manage/superQuery.do">
-            <img src="${contextPath}/images/12.png" />
-            <p>超级搜索</p>
+            <p>数码家电</p>
         </a>
     </li>
 </ul>
@@ -181,7 +181,7 @@
 	<li>
 		<a href="#">
 			<img src="${contextPath}/images/member.jpg" />
-			<p>个人中心</p>
+			<p>敬请期待</p>
 		</a>
 	</li>
 </ul>
@@ -214,7 +214,6 @@
     })
 
 	function get_list() {
-        pageNo++;
         $.ajax({
             url:""+"/manage/loadMoreItems.do",
             async:false,
@@ -225,21 +224,29 @@
                 var arrLen = data.length;
                 if(arrLen > 0){
                     $.each(data,function(index,item){
+                        var couponAmt = 0;
+                        console.log(item.coupon_info);
+                        if(null != item.coupon_info  && '' != item.coupon_info){
+                            var temp = item.coupon_info;
+                            var temp1 = temp.replace("满","").replace("元","").replace("元","").split("减");
+                            couponAmt = temp1[1];
+                        }
                         var createLi = document.createElement("li");
-                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">\n" +
-                            "\t\t\t\t\t<img src="+item.pictUrl+" />\n" +
+                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?num_iid="+item.num_iid+'&isCode=1'+">\n" +
+                            "\t\t\t\t\t<img src="+item.pict_url+" />\n" +
                             "\t\t\t\t\t<h2>"+item.title+"</h2>\n" +
                             "\t\t\t\t\t<div class='infor'>\n" +
-                            "\t\t\t\t\t\t<em size='1\'>现价￥"+item.zkPrice+"</em>\n" +
-                            "\t\t\t\t\t\t<span size='1'>已售￥"+item.biz30day+"件</span>\n" +
+                            "\t\t\t\t\t\t<em size='1\'>现价￥"+item.zk_final_price+"</em>\n" +
+                            "\t\t\t\t\t\t<span size='1'>已售￥"+item.volume+"件</span>\n" +
                             "\t\t\t\t\t</div><hr style='BORDER-TOP-STYLE: dotted; color: #ddd;'>" +
-                            "<div class='infor1'><em size='1'>券后￥"+(item.zkPrice-item.couponAmount).toFixed(2)+"</em>" +
-                            "<span size='1'>返￥"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"元</span></div>" +
+                            "<div class='infor1'><em size='1'>券后￥"+(item.zk_final_price-couponAmt).toFixed(2)+"</em>" +
+                            "<span size='1'>返￥"+((item.zk_final_price-couponAmt)*item.commission_rate/10000/2).toFixed(2)+"元</span></div>" +
                             "\t\t\t\t</a>"
                         document.getElementById("indexUl").appendChild(createLi);
                     });
+                    pageNo++;
                 }
-            },
+            }
         });
     }
 </script>

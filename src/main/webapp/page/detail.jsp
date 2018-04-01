@@ -86,7 +86,7 @@
 </div>
 <div class="h50"></div>
 <div class="banner" style="margin-top: -57px;">
-    <img id="loadUrl" src="${tbkitemdetail.pictUrl}"/>
+    <img id="loadUrl" src="${tbkitemdetail.pict_url}"/>
 </div>
 <div class="detail" style="margin-top:2px;">
     <p style="color: rgb(24, 24, 24); line-height: 0.5rem; text-indent: 0.24rem; font-size: 15px;color:#282828;">${tbkitemdetail.title}</p>
@@ -95,16 +95,27 @@
     <p style="text-indent: .24rem; color: #666; line-height: .5rem;font-size: 15px;color:#FFCC33;">【淘口令购买】长按框内 > 全选 >
         复制</p>
 </div>
-<div class="detail-content"
-     style="border: dashed 1px #FF0000;margin-right:15px;margin-left:15px; margin-bottom:8px;margin-top:5px;">
-    <p id="tbkText" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">
-        复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${token}</p>
-</div>
-<div class="detail-content" style="margin-right:100px;margin-left:110px; margin-bottom:2px;margin-top:5px;">
-    <button id="updateText" class="buttonRed" onclick="cp(document.getElementById('tbkText'))">一键复制</button>
-</div>
+<c:if test="${not empty token}">
+    <div class="detail-content"
+         style="border: dashed 1px #FF0000;margin-right:15px;margin-left:15px; margin-bottom:8px;margin-top:5px;">
+        <p id="tbkText" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">
+            复制框内整段文字，打开【手机淘宝】即可【领取优惠券】并购买${token}</p>
+    </div>
+    <div class="detail-content" style="margin-right:100px;margin-left:110px; margin-bottom:2px;margin-top:5px;">
+        <button id="updateText" class="buttonRed" onclick="cp(document.getElementById('tbkText'))">一键复制</button>
+    </div>
+</c:if>
+
+<c:if test="${empty token}">
+    <div class="detail-content"
+         style="border: dashed 1px #FF0000;margin-right:15px;margin-left:15px; margin-bottom:8px;margin-top:5px;">
+        <p id="tbkText1" style="text-indent: .24rem; color: #FF0000; line-height: .5rem;">
+            目前没有此商品的淘口令，请联系微信客服：wkc21nn
+    </div>
+</c:if>
+
 <div class="detail-content">
-    <p style="text-indent: .24rem; color: #666; line-height: .5rem;">点击复制后，请打开【手机淘宝】购买！注：若复制失败，请手动复制淘口令。</p>
+    <p style="text-indent: .24rem; color: #666; line-height: .5rem;">点击复制后，请打开【手机淘宝】购买！注：若复制失败，请手动复制淘口令。下单确认收货后，请联系客服获取返利金额，返利以商家结算为准。</p>
 </div>
 <div style="text-align: center;">
     <span id="imgMessage" class="buttonRed">图文详情</span>
@@ -128,11 +139,11 @@
         <c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
             <li>
                 <a href="${actionPath}/manage/detail?">
-                    <img src="${item.pictUrl}"/>
+                    <img src="${item.pict_url}"/>
                     <h2>${item.title}</h2>
                     <div class="infor">
-                        <em size="1">折后:${item.zkPrice}</em>
-                        <em size="1">已售:${item.totalNum}</em>
+                        <em size="1">折后:${item.zk_final_price}</em>
+                        <em size="1">已售:${item.volume}</em>
                     </div>
                 </a>
             </li>
@@ -171,12 +182,22 @@
             <p>首页</p>
         </a>
     </li>
-    <li>
-        <a data-toggle="modal" data-target="#myModal" >
-            <img src="${contextPath}/images/member.jpg"/>
-            <p>淘口令购买</p>
-        </a>
-    </li>
+    <c:if test="${not empty token}">
+        <li>
+            <a data-toggle="modal" data-target="#myModal" >
+                <img src="${contextPath}/images/member.jpg"/>
+                <p>淘口令购买</p>
+            </a>
+        </li>
+    </c:if>
+    <c:if test="${empty token}">
+        <li>
+            <a data-toggle="modal" data-target="" >
+                <img src="${contextPath}/images/member.jpg"/>
+                <p>敬请期待</p>
+            </a>
+        </li>
+    </c:if>
 </ul>
 </body>
 

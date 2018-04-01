@@ -44,10 +44,8 @@ public class TaoBaoApiTest {
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         TbkDgItemCouponGetRequest req = new TbkDgItemCouponGetRequest();
         req.setAdzoneId(272988181l);
-       /* req.setPlatform(1L);
-        req.setCat("16,18");*/
         req.setPageSize(2L);
-        req.setQ("爱丽小屋学生款可爱奶茶口红");
+        req.setQ("女装短袖");
         req.setPageNo(1L);
         TbkDgItemCouponGetResponse rsp = client.execute(req);
         List<TbkDgItemCouponGetResponse.TbkCoupon> list = rsp.getResults();
@@ -65,7 +63,7 @@ public class TaoBaoApiTest {
         WirelessShareTpwdCreateRequest.GenPwdIsvParamDto obj1 = new WirelessShareTpwdCreateRequest.GenPwdIsvParamDto();
         obj1.setExt("{\"xx\":\"xx\"}");
         obj1.setLogo("http:\\/\\/img.alicdn.com\\/tfscom\\/i3\\/2260511004\\/TB1jMuxbeuSBuNjy1XcXXcYjFXa_!!0-item_pic.jpg");
-        obj1.setUrl("http:\\/\\/uland.taobao.com\\/coupon\\/edetail?e=kjXU9cvoXh4GQASttHIRqUHq4Z9h5IvhRgVVI0lqCarbLaGB9uZG%2Btxf1SlTHSkYI2dSeRVq4Af2AHmhXzkvYAT2sdLup%2BCUDfqEFBOhTcwVNuMTM6bQOZVcBmYiQPO5j4OZCZybfY1qvtxrQaaW8GPfrr0N2WBeCVFQx8T36lD7J8FmRkgg%2BMMHqQ%2Bw9yuTqLe9qAj%2BukEsrbjNtqpwBw%3D%3D&traceId=0ab22d6215200548007171029");
+        obj1.setUrl("http://uland.taobao.com/coupon/edetail?activityId=042990a64f254eaeb8c5f21473ed7ef6&pid=mm_120912411_42970707_272988181&itemId=19146792344&src=pgy_pgyqf&dx=1");
         obj1.setText("超值活动，惊喜活动多多");
         obj1.setUserId(24234234234L);
         req.setTpwdParam(obj1);
@@ -77,11 +75,11 @@ public class TaoBaoApiTest {
     public void toTaoKouLing2() throws ApiException{
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
-        req.setText("长度大于5个字符");
-        req.setUrl("https://uland.taobao.com/coupon/edetail?e=8wf%2FVWbXbIwN%2BoQUE6FNzBU24xMzptA5lVwGZiJA87mPg5kJnJt9jUDSR7Uyp%2BzrlS70ILUl5sW8uogIr%2FgW43z%2F5lYwoL5IC0DytI6FkgQtRQESerfUYbtSK7uoVJlqqGqKrnb%2BK8QeQvvf934DYKvk59rYX%2FOY&af=1&pid=mm_120912411_42970707_272988181");
-        req.setLogo("https://uland.taobao.com/");
+        req.setText("唯美家居专营店");
+        req.setUrl("https://uland.taobao.com/coupon/edetail?activityId=6226acd8bbf44c4199eab71f3ca97685&pid=mm_120912411_42970707_272988181&itemId=37275728910&src=pgy_pgyqf&dx=1");
+        req.setLogo("https:\\/\\/img.alicdn.com\\/bao\\/uploaded\\/i3\\/TB1rdbjOXXXXXcxXXXXXXXXXXXX_!!0-item_pic.jpg");
         TbkTpwdCreateResponse rsp = client.execute(req);
-        System.out.println(rsp.getBody());
+         System.out.println(rsp.getBody());
 
     }
 
@@ -103,12 +101,13 @@ public class TaoBaoApiTest {
 
     @Test
     public void getTaoKouLing3() throws ApiException{
-        TaobaoClient client = new DefaultTaobaoClient(Commons.TBK_URL, Commons.APPKEY, Commons.SECRET);
-        TbkTpwdCreateRequest req = new TbkTpwdCreateRequest();
-        req.setText("长度大于5个字符");
-        req.setUrl("https://s.click.taobao.com/bpKbFTw");
-        req.setLogo("https://uland.taobao.com/");
-        TbkTpwdCreateResponse rsp = client.execute(req);
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TbkUatmFavoritesGetRequest req = new TbkUatmFavoritesGetRequest();
+        req.setPageNo(1L);
+        req.setPageSize(20L);
+        req.setFields("favorites_title,favorites_id,type");
+        req.setType(1L);
+        TbkUatmFavoritesGetResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
 
     }
@@ -123,7 +122,7 @@ public class TaoBaoApiTest {
         TbkItemInfoGetRequest req = new TbkItemInfoGetRequest();
         req.setFields("num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url");
        //req.setPlatform(2L);
-        req.setNumIids("562533629533");
+        req.setNumIids("546863299715");
         TbkItemInfoGetResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
     }
@@ -150,16 +149,58 @@ public class TaoBaoApiTest {
     @Test
     public void couponMessage1()throws ApiException{
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
-        TbkUatmFavoritesGetRequest req = new TbkUatmFavoritesGetRequest();
-        //req.setPageNo(1L);
-        //req.setPageSize(20L);
-        req.setFields("favorites_title,favorites_id,type");
-       // req.setType(1L);
-        TbkUatmFavoritesGetResponse rsp = client.execute(req);
+        TbkCouponGetRequest req = new TbkCouponGetRequest();
+        //req.setMe("nfr%2BYTo2k1PX18gaNN%2BIPkIG2PadNYbBnwEsv6mRavWieOoOE3L9OdmbDSSyHbGxBAXjHpLKvZbL1320ML%2BCF5FRtW7N7yJ056Lgym4X01A%3D");
+        req.setItemId(563763204092l);
+        req.setActivityId("4fa53b76c9954e108e8d40d918cd74");
+        TbkCouponGetResponse rsp = client.execute(req);
         System.out.println(rsp.getBody());
     }
 
 
+    @Test
+    public void dtkApi() throws ApiException {
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TbkUatmFavoritesItemGetRequest req = new TbkUatmFavoritesItemGetRequest();
+        req.setPlatform(1L);
+        req.setPageSize(20L);
+        req.setAdzoneId(272988181l);
+        req.setFavoritesId(16391739l);
+        req.setPageNo(2L);
+        req.setFields("num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type");
+        TbkUatmFavoritesItemGetResponse rsp = client.execute(req);
+        System.out.println(rsp.getBody());
+    }
+
+    /**
+     * taobao.tbk.sc.material.optional (通用物料搜索API)
+     */
+    @Test
+    public void tbkOptional() throws ApiException {
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
+        TbkDgMaterialOptionalRequest req = new TbkDgMaterialOptionalRequest();
+        /*req.setStartDsr(10L);
+        req.setPageSize(20L);
+        req.setPageNo(1L);
+        req.setPlatform(1L);
+        req.setEndTkRate(1234L);
+        req.setStartTkRate(1234L);
+        req.setEndPrice(10L);
+        req.setStartPrice(10L);
+        req.setIsOverseas(false);
+        req.setIsTmall(false);
+        req.setSort("tk_rate_des");
+        req.setItemloc("杭州");*/
+        //req.setCat("16,18");
+        req.setPageSize(5L);
+        req.setPageNo(1L);
+        req.setQ("男装");
+        req.setSort("total_sales");
+        req.setHasCoupon(true);
+        req.setAdzoneId(272988181L);
+        TbkDgMaterialOptionalResponse rsp = client.execute(req);
 
 
+         System.out.println(rsp.getBody());
+    }
 }

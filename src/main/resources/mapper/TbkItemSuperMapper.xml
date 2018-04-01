@@ -72,6 +72,7 @@
         where 1=1
         and t.isCode = '1'
         and t.isShow = '1'
+        AND t.`couponEffectiveEndTime` <![CDATA[ <= ]]> DATE_FORMAT(NOW(),'%Y-%m-%d')
         <if test="title != null and title != ''">
             and  t.TITLE like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
         </if>
@@ -132,6 +133,7 @@
         where 1=1
             and t.isCode = '1'
             and t.isShow = '1'
+            /*and t.couponEffectiveEndTime <![CDATA[ <= ]]> DATE_FORMAT(NOW(),'%Y-%m-%d')*/
             order by t.zkPrice,t.biz30day desc
     </select>
 </mapper>

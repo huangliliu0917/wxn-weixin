@@ -161,7 +161,7 @@
 	<li>
 		<a href="#">
 			<img src="${contextPath}/images/member.jpg" />
-			<p>个人中心</p>
+			<p>敬请期待</p>
 		</a>
 	</li>
 </ul>

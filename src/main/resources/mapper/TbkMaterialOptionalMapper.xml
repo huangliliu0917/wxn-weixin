@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxn.weixin.dal.mapper.TbkMaterialOptionalMapper">
+
+    <resultMap id="BaseResultMap" type="com.wxn.weixin.dal.model.TbkMaterialOptionalDO">
+        <result column="coupon_start_time" jdbcType="VARCHAR" property="coupon_start_time" />
+        <result column="coupon_end_time" jdbcType="VARCHAR" property="coupon_end_time" />
+        <result column="info_dxjh" jdbcType="VARCHAR" property="info_dxjh" />
+        <result column="tk_total_sales" jdbcType="DECIMAL" property="tk_total_sales" />
+        <result column="tk_total_commi" jdbcType="VARCHAR" property="tk_total_commi" />
+        <result column="coupon_id" jdbcType="VARCHAR" property="coupon_id" />
+        <result column="num_iid" jdbcType="VARCHAR" property="num_iid" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="small_images" jdbcType="VARCHAR" property="smallImages" />
+        <result column="reserve_price" jdbcType="VARCHAR" property="reserve_price" />
+        <result column="zk_final_price" jdbcType="VARCHAR" property="zk_final_price" />
+        <result column="user_type" jdbcType="VARCHAR" property="user_type" />
+        <result column="provcity" jdbcType="VARCHAR" property="provcity" />
+        <result column="item_url" jdbcType="VARCHAR" property="item_url" />
+        <result column="include_mkt" jdbcType="VARCHAR" property="include_mkt" />
+        <result column="include_dxjh" jdbcType="VARCHAR" property="include_dxjh" />
+        <result column="commission_rate" jdbcType="VARCHAR" property="commission_rate" />
+        <result column="pict_url" jdbcType="VARCHAR" property="pict_url" />
+        <result column="volume" jdbcType="DECIMAL" property="volume" />
+        <result column="seller_id" jdbcType="VARCHAR" property="seller_id" />
+        <result column="coupon_total_count" jdbcType="DECIMAL" property="coupon_total_count" />
+        <result column="coupon_remain_count" jdbcType="DECIMAL" property="coupon_remain_count" />
+        <result column="coupon_info" jdbcType="VARCHAR" property="coupon_info" />
+        <result column="commission_type" jdbcType="VARCHAR" property="commission_type" />
+        <result column="shop_title" jdbcType="VARCHAR" property="shop_title" />
+        <result column="itemType" jdbcType="VARCHAR" property="itemType" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.wxn.weixin.dal.model.TbkMaterialOptionalDO">
+        insert ignore t_tbk_material_optional
+          (coupon_start_time,
+            coupon_end_time,
+            info_dxjh,
+            tk_total_sales,
+            tk_total_commi,
+            coupon_id,
+            num_iid,
+            title,
+            small_images,
+            reserve_price,
+            zk_final_price,
+            user_type,
+            provcity,
+            item_url,
+            include_mkt,
+            include_dxjh,
+            commission_rate,
+            volume,
+            seller_id,
+            coupon_total_count,
+            coupon_remain_count,
+            coupon_info,
+            commission_type,
+            shop_title,
+            itemType,
+            pict_url)
+        values
+            (
+                #{coupon_start_time,jdbcType=VARCHAR},
+                #{coupon_end_time,jdbcType=VARCHAR},
+                #{info_dxjh,jdbcType=VARCHAR},
+                #{tk_total_sales,jdbcType=DECIMAL},
+                #{tk_total_commi,jdbcType=VARCHAR},
+                #{coupon_id,jdbcType=VARCHAR},
+                #{num_iid,jdbcType=VARCHAR},
+                #{title,jdbcType=VARCHAR},
+                #{smallImages,jdbcType=VARCHAR},
+                #{reserve_price,jdbcType=VARCHAR},
+                #{zk_final_price,jdbcType=VARCHAR},
+                #{user_type,jdbcType=VARCHAR},
+                #{provcity,jdbcType=VARCHAR},
+                #{item_url,jdbcType=VARCHAR},
+                #{include_mkt,jdbcType=VARCHAR},
+                #{include_dxjh,jdbcType=VARCHAR},
+                #{commission_rate,jdbcType=VARCHAR},
+                #{volume,jdbcType=DECIMAL},
+                #{seller_id,jdbcType=VARCHAR},
+                #{coupon_total_count,jdbcType=DECIMAL},
+                #{coupon_remain_count,jdbcType=VARCHAR},
+                #{coupon_info,jdbcType=VARCHAR},
+                #{commission_type,jdbcType=VARCHAR},
+                #{shop_title,jdbcType=VARCHAR},
+                #{itemType,jdbcType=VARCHAR},
+                #{pict_url,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <select id="getItems" parameterType="com.wxn.weixin.pojo.SuperQueryPo" resultMap="BaseResultMap">
+        select
+        t.num_iid,
+        t.pict_url,
+        t.title,
+        t.reserve_price,
+        t.volume,
+        t.zk_final_price,
+        t.coupon_info,
+        t.commission_rate
+        from
+        t_tbk_material_optional t
+        where 1=1
+        AND DATE_FORMAT(t.coupon_end_time , '%Y-%m-%d') <![CDATA[ >= ]]> NOW()
+        <if test="title != null and title != ''">
+            and  t.title like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="itemType != null and itemType != ''">
+            and  t.itemType = #{itemType,jdbcType=VARCHAR}
+        </if>
+        <if test="minfee != null and minfee != ''">
+            and t.zk_final_price <![CDATA[ >= ]]> #{minfee,jdbcType=DECIMAL}
+        </if>
+        <if test="maxfee != null and maxfee != ''">
+            and t.zk_final_price <![CDATA[ <= ]]> #{maxfee,jdbcType=DECIMAL}
+        </if>
+        <if test='onlyq != null and onlyq == "0"'>
+            and t.coupon_remain_count > 0
+        </if>
+        <if test='onlyq != null and onlyq == "1"'>
+            and t.coupon_remain_count IS NULL
+        </if>
+        <if test='operType != null and operType == "1"'>
+            and t.zk_final_price <![CDATA[ <= ]]> 9.9
+        </if>
+        <if test='operType != null and operType == "2"'>
+            and t.zk_final_price <![CDATA[ <= ]]> 19.9
+        </if>
+        <if test='operType != null and operType == "3"'>
+            and t.itemType = '1'
+        </if>
+        <if test='gotype != null and gotype == "1" and operType != "3"'>
+            order by t.zk_final_price,t.volume desc
+        </if>
+        <if test='gotype != null and gotype == "2"'>
+            order by t.commission_rate desc
+        </if>
+        <if test='(gotype != null and gotype == "3") or operType == "3"'>
+            order by t.volume desc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "up"'>
+            order by t.zk_final_price asc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "down"'>
+            order by t.zk_final_price desc
+        </if>
+    </select>
+
+    <select id="getItemById" parameterType="com.wxn.weixin.dal.model.TbkMaterialOptionalDO" resultMap="BaseResultMap">
+         select
+        t.num_iid,
+        t.pict_url,
+        t.title,
+        t.reserve_price,
+        t.volume,
+        t.zk_final_price,
+        t.coupon_info,
+        t.commission_rate,
+        t.coupon_id,
+        t.small_images,
+        coupon_remain_count
+        from
+        t_tbk_material_optional t
+        where t.num_iid = #{num_iid,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="getItemsToSuperQuery" parameterType="com.wxn.weixin.pojo.SuperQueryPo" resultMap="BaseResultMap">
+        select
+        t.num_iid,
+        t.pict_url,
+        t.title,
+        t.reserve_price,
+        t.volume,
+        t.zk_final_price,
+        t.coupon_info,
+        t.commission_rate,
+        item_url
+        from
+        t_tbk_material_optional t
+        where 1=1
+        <if test="title != null and title != ''">
+            and  t.title like concat(concat('%',#{title,jdbcType=VARCHAR}),'%')
+        </if>
+        <if test="itemType != null and itemType != ''">
+            and  t.itemType = #{itemType,jdbcType=VARCHAR}
+        </if>
+        <if test="minfee != null and minfee != ''">
+            and t.zk_final_price <![CDATA[ >= ]]> #{minfee,jdbcType=DECIMAL}
+        </if>
+        <if test="maxfee != null and maxfee != ''">
+            and t.zk_final_price <![CDATA[ <= ]]> #{maxfee,jdbcType=DECIMAL}
+        </if>
+        <if test='onlyq != null and onlyq == "0"'>
+            and t.coupon_remain_count > 0 AND DATE_FORMAT(t.coupon_end_time , '%Y-%m-%d') <![CDATA[ >= ]]> NOW()
+        </if>
+        <if test='onlyq != null and onlyq == "1"'>
+            and t.coupon_remain_count IS NULL
+        </if>
+        <if test='operType != null and operType == "1"'>
+            and t.zk_final_price <![CDATA[ <= ]]> 9.9
+        </if>
+        <if test='operType != null and operType == "2"'>
+            and t.zk_final_price <![CDATA[ <= ]]> 19.9
+        </if>
+        <if test='operType != null and operType == "3"'>
+            and t.itemType = '1'
+        </if>
+        <if test='gotype != null and gotype == "1" and operType != "3"'>
+            order by t.zk_final_price,t.volume desc
+        </if>
+        <if test='gotype != null and gotype == "2"'>
+            order by t.commission_rate desc
+        </if>
+        <if test='(gotype != null and gotype == "3") or operType == "3"'>
+            order by t.volume desc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "up"'>
+            order by t.zk_final_price asc
+        </if>
+        <if test='gotype != null and gotype == "4" and jiage == "down"'>
+            order by t.zk_final_price desc
+        </if>
+    </select>
+
+    <select id="getItemsBySuperQueryPage" parameterType="com.wxn.weixin.pojo.SuperQueryPo" resultMap="BaseResultMap">
+        select
+        t.num_iid,
+        t.pict_url,
+        t.title,
+        t.reserve_price,
+        t.volume,
+        t.zk_final_price,
+        t.coupon_info,
+        t.commission_rate,
+        item_url
+        from
+        t_tbk_material_optional t
+        where 1=1
+            and t.coupon_remain_count > 0
+            AND DATE_FORMAT(t.coupon_end_time , '%Y-%m-%d') <![CDATA[ >= ]]> NOW()
+            order by t.volume desc LIMIT 0,5
+    </select>
+
+</mapper>

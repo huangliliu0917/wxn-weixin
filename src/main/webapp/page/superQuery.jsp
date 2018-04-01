@@ -7,8 +7,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-<title>全网精选优惠券</title>
-
+<div style="text-align: center">
+    <title>全网精选优惠券</title>
+</div>
 <link rel="stylesheet" type="text/css" href="../page/superquery/amazeui.min.css"/>
 <link rel="stylesheet" type="text/css" href="../page/superquery/hl_style.css" />
 <script type="text/javascript" src="../page/js/jquery.min.js"></script>
@@ -426,17 +427,20 @@
                     边看边买
                 </div>
                 <div class="fq-super-slider am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:160, itemMargin: 5,animationSpeed:400, slideshow: true,playAfterPaused: 6000}">
-                    <ul class="am-slides">
-                     <li>
-                         <a class="fq-super-goods am-text-left" href="">
-                            <img src="http://img.alicdn.com/imgextra/i4/139011728/TB2pHuwaUR1BeNjy0FmXXb0wVXa_!!139011728.jpg_200x200.jpg" />
-                            <div class="fq-super-messages am-padding-xs">
-                                <span class="fq-super-sale am-text-xs">月销30002</span>
-                                <span class="am-text-xs" style="color:#F42B45">券后￥8.8</span>
-                                <span class="fq-coupon">3元券</span>
-                            </div>
-                         </a>
-                     </li>
+                    <ul id="list_box" class="am-slides">
+                        <c:if test="${not empty tbkItems}">
+                            <c:forEach items="${tbkItems}" var="item" varStatus="tbkItems">
+                                <li>
+                                    <a class="fq-super-goods am-text-left" href="">
+                                        <img src="${item.pict_url}" />
+                                        <div class="fq-super-messages am-padding-xs">
+                                            <span class="fq-super-sale am-text-xs">${item.volume}</span>
+                                            <span class="am-text-xs" style="color:#F42B45">现价￥${item.zk_final_price}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </c:forEach>
+                        </c:if>
                     </ul>
                 </div>
             </div>
@@ -478,33 +482,46 @@
                         <a href="" class="link-hover"></a>
                         <div class="menu-inside" style="height:38px;">
                             <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/huiyuan.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
+                            <div class="font-div" style="padding-top:0px;margin-bottom:3px;">敬请期待</div>
                         </div>
                     </li>
                 </ul>
         </div>
     </div>
-<!--今日优选-->
 <%--<script>
-    $('.fq-ad-slider').flexslider({
-        playAfterPaused: 6000,
-        before: function(slider) {
-            if (slider._pausedTimer) {
-            window.clearTimeout(slider._pausedTimer);
-            slider._pausedTimer = null;
+    //页面加载时获取商品列表
+    $(function () {
+        get_list();
+    })
+
+    function get_list() {
+        $.ajax({
+            url:""+"/manage/superQueryItems.do",
+            async:false,
+            dataType:'json',
+            type:"post",
+            success : function(data) {
+                var arrLen = data.length;
+                if(arrLen > 0){
+                    $.each(data,function(index,item){
+                        var couponAmt = 0;
+                        console.log(item.coupon_info);
+                        if(null != item.coupon_info  && '' != item.coupon_info){
+                            var temp = item.coupon_info;
+                            var temp1 = temp.replace("满","").replace("元","").replace("元","").split("减");
+                            couponAmt = temp1[1];
+                        }
+                        var createLi = document.createElement("li");
+                        createLi.innerHTML+="<a class='fq-super-goods am-text-left' href=''><img src="+item.pict_url+" />" +
+                        "<div class='fq-super-messages am-padding-xs'><span class='fq-super-sale am-text-xs'>"+item.volume+"</span>" +
+                        "<span class='am-text-xs' style='color:#F42B45'>券后"+(item.zk_final_price-couponAmt).toFixed(2)+"</span>" +
+                        "<span class='fq-coupon'>"+couponAmt+"元券</span></div></a>"
+                        document.getElementById("list_box").appendChild(createLi)
+                    });
+                }
             }
-        },
-        after: function(slider) {
-            var pauseTime = slider.vars.playAfterPaused;
-            if (pauseTime && !isNaN(pauseTime) && !slider.playing) {
-            if (!slider.manualPause && !slider.manualPlay && !slider.stopped) {
-                slider._pausedTimer = window.setTimeout(function() {
-                slider.play();
-                }, pauseTime);
-            }
-            }
-        }
-    });
+        });
+    }
 </script>--%>
 <script>
     $('#clickurl').click(function(){
@@ -537,114 +554,5 @@
         return false;
     }
 </script>
-<script>
-/*    $('.item_list').on('click','.click_video',function(){
-        $('#fq-video').modal();
-        var vid = $(this).attr('data-vid');
-        if(vid>0){
-            var a = 'http://cloud.video.t';
-            var b = 'aobao.co';
-            var src = a+b+'m/play/u/1/p/1/e/6/t/1/'+vid+'.mp4';
-            $('#video_url').attr('src',src);
-        }
-    })*/
-</script>
 </body>
 </html>
-
-<script>
-//热门标签
-$('.change_tickets').click(function(){
-        change();
-})
-</script>
-
-<%--<script>
-function change(){
-$('.change_tickets').css('display','none'); 
-        $.ajax({
-            url:"http://wx.sskk88.cn/addons/bsht_tbkquan/rand.php",
-            success:function(data){         
-                 $('.change_tickets').css('display','block');        
-				 data = JSON.parse(data);
-				 var tickets_array = data.tickets;
-                 var tickets_list_array = data.tickets_list;
-                 var str = '';
-				 //console.log(data);
-                 for(var i=0;i<9;i++){
-                     var key = tickets_array[i];
-                     var tickets_name = tickets_list_array[key];
-                     var agent_pname = "";
-                      
-                          var jumpurl = "http://wx.sskk88.cn/app/index.php?c=entry&i=4&m=bsht_tbkquan&do=so&itemid=&sid=&itemfee=&itempic=&nb_shopid=0&keyword="+tickets_name+"&shopid=0&actid=&openid=";
-						  str += '<a href="'+jumpurl+'"><button type="button" class="am-btn fq-hot-label am-round am-margin-right-xs am-text-sm hot_label am-margin-bottom-sm">'+tickets_name+'</button></a>';
-                      
-                     
-                 }
-                 $('.tickets_content').html(str);
-                
-            }
-});
-}--%>
-
-<%--$(function() {
-change();
-
-$('#itemurl').on('input propertychange', function() {
-    //
-	var livekey = $('#itemurl').val();
-	$('.suggest').hide();
-	$('#suggest').hide();
-	if(livekey){
-	     $.ajax({
-             type: "get",
-             async: false,
-             url: "http://suggest.taobao.com/sug?&code=utf-8&q="+livekey,
-             dataType: "jsonp",
-             jsonp: "callback",
-             success: function(json){
-                 if(json.result){
-				 var qarrLen = json.result.length;
-				 //alert(qarrLen);
-				 if(qarrLen<1 || qarrLen==0){
-				 $('.suggest').hide();
-				 $('#suggest').hide();
-				 return;
-				 }
-				 //alert(qarrLen);
-				 var resultq = '';
-				 for (var i = 0; i < qarrLen; i++) {
-				    resultq += '<a href="javascript:;" onclick="nbsosq(this)" name="'+json.result[i][0]+'"><li class="">'+json.result[i][0]+'</li></a>';
-				 }
-				 $('#suggest').html(resultq);
-				 $('.suggest').show();
-				 $('#suggest').show();
-				 }else{
-				 $('.suggest').hide();
-				 $('#suggest').hide();
-				 }
-				 //alert(json.result);
-				 //$('.suggest').show();
-             },
-             error: function(){
-                 $('.suggest').hide();
-				 $('#suggest').hide();
-             }
-         });
-	}
-});
-
-wx.config(jssdkconfig);
-wx.ready(function () {
-wx.hideAllNonBaseMenuItem();
-});
-});
-</script>--%>
-<%--<script>
-    var ckua = navigator.userAgent.toLowerCase();
-        if (ckua.match(/iphone/i) == "iphone"){
-            if(/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)){
-                console.log('X');$("#nb-menu").attr('style','padding-bottom:30px');
-            }
-}
-</script>--%>

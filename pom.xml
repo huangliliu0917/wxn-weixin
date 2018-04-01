@@ -26,7 +26,7 @@
         <slf4j.api>1.7.5</slf4j.api>
         <logback>1.0.13</logback>
         <selenium>1.0</selenium>
-        <taobao>1.0</taobao>
+        <taobao>2.0</taobao>
     </properties>
 
     <dependencies>
@@ -181,7 +181,7 @@
         <dependency>
             <groupId>com.taobao</groupId>
             <artifactId>taobao-api</artifactId>
-            <version>1.0</version>
+            <version>2.0</version>
         </dependency>
 
         <dependency>

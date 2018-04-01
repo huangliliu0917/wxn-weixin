@@ -33,7 +33,8 @@
           ZK_FINAL_PRICE,
           VOLUME,
           TAO_TOKEN,
-          SHORT_LINK_URL
+          SHORT_LINK_URL,
+          SCLICK
           from t_tbk_item_detail t
         where t.IS_CODE = '1'
         <if test="itemId != null and itemId != ''">

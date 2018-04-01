@@ -354,17 +354,17 @@
 		}
 
 	</style>
-	<title id="title">
+	<title id="title" style="text-align: center">
 		<c:if test="${tbkItem.itemType eq '1'}">女装</c:if>
-		<c:if test="${tbkItem.itemType eq '2'}">男装</c:if>
-		<c:if test="${tbkItem.itemType eq '3'}">内衣</c:if>
-		<c:if test="${tbkItem.itemType eq '4'}">母婴</c:if>
-		<c:if test="${tbkItem.itemType eq '5'}">化妆品</c:if>
-		<c:if test="${tbkItem.itemType eq '6'}">居家</c:if>
-		<c:if test="${tbkItem.itemType eq '7'}">鞋包</c:if>
-		<c:if test="${tbkItem.itemType eq '8'}">配饰</c:if>
-		<c:if test="${tbkItem.itemType eq '9'}">车品</c:if>
-		<c:if test="${tbkItem.itemType eq '10'}">其它</c:if>
+		<c:if test="${tbkItem.itemType eq '2'}">母婴</c:if>
+		<c:if test="${tbkItem.itemType eq '3'}">化妆品</c:if>
+		<c:if test="${tbkItem.itemType eq '4'}">居家</c:if>
+		<c:if test="${tbkItem.itemType eq '5'}">鞋包配饰</c:if>
+		<c:if test="${tbkItem.itemType eq '6'}">美食</c:if>
+		<c:if test="${tbkItem.itemType eq '7'}">文体车品</c:if>
+		<c:if test="${tbkItem.itemType eq '8'}">数码家电</c:if>
+		<c:if test="${tbkItem.itemType eq '9'}">男装</c:if>
+		<c:if test="${tbkItem.itemType eq '10'}">内衣</c:if>
 		<c:if test="${tbkItem.operType eq '1'}">9.9专区</c:if>
 		<c:if test="${tbkItem.operType eq '2'}">19.9专区</c:if>
 		<c:if test="${tbkItem.operType eq '3'}">特惠女装</c:if>
@@ -673,14 +673,15 @@
 			<div id="xl_001">
 				<ul style="width:100%">
 					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=1';" style="color: rgb(255, 95, 73);">女装</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=2';" >男装</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=3';" >内衣</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=8';" >配饰</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=4';" >母婴</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=5';" >化妆品</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=6';" >居家</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=7';" >鞋包</li>
-					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=9';" >车品</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=10';" >内衣</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=2';" >母婴</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=3';" >化妆品</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=4';" >居家</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=5';" >鞋包配饰</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=6';" >美食</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=7';" >文体车品</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=8';" >数码家电</li>
+					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=9';" >男装</li>
 					<li class="xl_div_001" onclick="javascript:window.location.href='${actionPath}/manage/tbkItemsByImg.do?itemType=10';" >其它</li>
 				</ul>
 			</div>
@@ -738,7 +739,7 @@
 						<a href="" class="link-hover"></a>
 						<div class="menu-inside" style="height:38px;">
 							<i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/huiyuan.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-							<div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
+							<div class="font-div" style="padding-top:0px;margin-bottom:3px;">敬请期待</div>
 						</div>
 					</li>
 				</ul>
@@ -804,6 +805,7 @@
 </script>
 <script>
     function topck(name){
+        pageNo=1;
         window.localStorage.removeItem("min_id_last");
         $("#list_box").empty();
         var divid = name.replace('_','');
@@ -833,6 +835,7 @@
     }
 
     $(".xl_div_002").off("click").on("click",function(){
+        pageNo=1;
         $("#pageCon .list_box").html('');
         typename =  $(this).attr("data-id");
         if("moren"==typename){
@@ -857,6 +860,7 @@
 
 
     $(".xl_div_006_3").off("click").on("click",function(){
+        pageNo=1;
         $("#pageCon .list_box").html('');
         minfee =  $('#minfee').val();
         maxfee =  $('#maxfee').val();
@@ -908,22 +912,28 @@
                 var arrLen = data.length;
                 if(arrLen > 0){
                     $.each(data,function(index,item){
-                        console.log(item);
+                        var couponAmt = 0;
+                        console.log(item.coupon_info);
+                        if(null != item.coupon_info  && '' != item.coupon_info){
+                            var temp = item.coupon_info;
+                            var temp1 = temp.replace("满","").replace("元","").replace("元","").split("减");
+                            couponAmt = temp1[1];
+                        }
                         var createLi = document.createElement("li");
                         createLi.className="picCon ";
-                        createLi.innerHTML+="<a class='goods-a' href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">" +
-                            "<img class='loazd' src="+item.pictUrl+" style='height: 161px;'>" +
+                        createLi.innerHTML+="<a class='goods-a' href="+domain+"/manage/tbkItemDetail.do?num_iid="+item.num_iid+'&isCode=1'+">" +
+                            "<img class='loazd' src="+item.pict_url+" style='height: 161px;'>" +
                             "<span style='background:url('../page/images/tmall.png') no-repeat 0 0;height:0;overflow:hidden; padding-bottom:15px; width: 15px;position:absolute;bottom:5px; right:5px;z-index:15;'></span>" +
-                            "</a><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+"><h3 class='tith3'>"+item.title+"</h3>" +
+                            "</a><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.num_iid+"><h3 class='tith3'>"+item.title+"</h3>" +
                             "<div class='list-price buy'><span class='price-new'>" +
                             "<i class='i-baoyou'>抢购</i>" +
-                            "<i class='i-quan'>券"+item.couponAmount+"元</i>" +
-                            "</span><span class='good-btn' style='color:#999'>销量"+item.biz30day+"</span></div>" +
+                            "<i class='i-quan'>券"+couponAmt+"元</i>" +
+                            "</span><span class='good-btn' style='color:#999'>销量"+item.volume+"</span></div>" +
                             "<div class='list-price buy'><span class='price-new fs12'>" +
-                            "<span style='text-decoration: line-through;color: rgba(171, 171, 171, 1);'>￥"+item.zkPrice+"</span> 券后"+(item.zkPrice-item.couponAmount).toFixed(2)+"<i>元</i>" +
-                            "</span><span class='.buy .price-new' style='float: right;color: #FE4E4E;font-size: 12px;'>返"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
+                            "<span style='text-decoration: line-through;color: rgba(171, 171, 171, 1);'>￥"+item.zk_final_price+"</span> 券后"+(item.zk_final_price-couponAmt).toFixed(2)+"<i>元</i>" +
+                            "</span><span class='.buy .price-new' style='float: right;color: #FE4E4E;font-size: 12px;'>返"+((item.zk_final_price-couponAmt)*item.commission_rate/10000/2).toFixed(2)+"</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
                             "<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">领券</a></div></div></div><div class='btn-l'>" +
-                            "<div class='btn-wai'><div class='btn-nei2'><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">详情</a></div>" +
+                            "<div class='btn-wai'><div class='btn-nei2'><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.num_iid+">详情</a></div>" +
                             "</div></div></div>"
                         document.getElementById("list_box").appendChild(createLi)
                     });

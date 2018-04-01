@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <title>全网精选折扣汇</title>
+    <title style="text-align: center">全网精选折扣汇</title>
     <link rel="stylesheet" type="text/css" href="../page/superquerylist/neat-min.css" />
     <link rel="stylesheet" type="text/css" href="../page/superquerylist/so.css?v=2017" />
     <script src="../page/superquerylist/index.js?v=2017"></script>
@@ -517,7 +517,7 @@
             <a href="" class="link-hover"></a>
             <div class="menu-inside" style="height:38px;">
                 <i id="nb_btn_15" class="nb-btn" style="margin-bottom:3px;background-image:url('../page/images/huiyuan.png');background-position: 50% 50%; background-repeat:no-repeat;width:25px;height:25px;border-radius: 0%;margin-bottom:8px"></i>
-                <div class="font-div" style="padding-top:0px;margin-bottom:3px;">个人中心</div>
+                <div class="font-div" style="padding-top:0px;margin-bottom:3px;">敬请期待</div>
             </div>
         </li>
     </ul>
@@ -663,20 +663,27 @@
                 var arrLen = data.length;
                 if(arrLen > 0){
                     $.each(data,function(index,item){
+                        var couponAmt = 0;
+                        console.log(item.coupon_info);
+                        if(null != item.coupon_info  && '' != item.coupon_info){
+                            var temp = item.coupon_info;
+                            var temp1 = temp.replace("满","").replace("元","").replace("元","").split("减");
+                            couponAmt = temp1[1];
+                        }
                         var createLi = document.createElement("li");
                         createLi.className="item-detail topdh";
-                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+"><div class='item-img'><img class='J_item_image' src='"+item.pictUrl+"'>" +
+                        createLi.innerHTML+="<a href="+domain+"/manage/tbkItemDetail.do?num_iid="+item.num_iid+"&isCode="+item.isCode+"&item_url="+item.item_url+"><div class='item-img'><img class='J_item_image' src='"+item.pict_url+"'>" +
                             "</div><div class='item-right'><span class='item-title'>"+item.title+"</span><div class='item-line'>" +
                             "<span class='line-group'><span>现价 ￥</span>" +
-                            "<span style='text-decoration:none;'>"+item.zkPrice+"</span></span><span class='line-group'>" +
-                            "<span>已售"+item.biz30day+"件</span></span></div><div class='item-line' style='margin-bottom: 0.2rem'>" +
+                            "<span style='text-decoration:none;'>"+item.zk_final_price+"</span></span><span class='line-group'>" +
+                            "<span>已售"+item.volume+"件</span></span></div><div class='item-line' style='margin-bottom: 0.2rem'>" +
                             "<span class='line-group'><span>券后 </span><span style='margin-right: -0.05rem'>￥</span>" +
-                            "<span class='cl-dark' style='font-size: 0.35rem'>"+(item.zkPrice-item.couponAmount).toFixed(2)+"</span></span></div>" +
+                            "<span class='cl-dark' style='font-size: 0.35rem'>"+(item.zk_final_price-couponAmt).toFixed(2)+"</span></span></div>" +
                             "<div class='item-line'><div class='line-group coupon-tag-wrap'><div class='coupon-tag'>券</div>" +
-                            "<div class='coupon-price'>"+item.couponAmount+"元</div></div></div><div class='item-handle'>" +
+                            "<div class='coupon-price'>"+couponAmt+"元</div></div></div><div class='item-handle'>" +
                             "<img class='item-handle-img' src='../page/images/more.png'><div class='item-handle-text'>" +
                             "<span style='font-size:0.24rem;color: #ff5500'>返 </span>" +
-                            "<span style='font-size:0.29rem;color: #ff5500'>"+((item.zkPrice-item.couponAmount)*item.tkCommonRate/100/2).toFixed(2)+"元</span></div></div></div></a>"
+                            "<span style='font-size:0.29rem;color: #ff5500'>"+((item.zk_final_price-couponAmt)*item.commission_rate/10000/2).toFixed(2)+"元</span></div></div></div></a>"
                         document.getElementById("inData").appendChild(createLi)
                     });
                 }else{
