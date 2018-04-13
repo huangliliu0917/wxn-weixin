@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,6 +34,14 @@ public class TaoBaoAction extends BaseAction{
     private TbkSuperQueryManager tbkSuperQueryManager;
 
     /**
+     * 优惠券入口
+     * @return
+     */
+    @RequestMapping("/")
+    public String index(){
+        return "page/index";
+    }
+   /**
      * 优惠券入口
      * @return
      */

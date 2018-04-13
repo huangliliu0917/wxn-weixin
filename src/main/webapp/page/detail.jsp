@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="${contextPath}/css/style.css" type="text/css"/>
     <link rel="stylesheet" href="${contextPath}/css/main.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="../page/js/jquery.min.js"></script>
     <script src="../page/js/bootstrap.min.js"></script>
+    <script src="../page/js/jquery.min.js"></script>
     <script type="text/javascript">
         !function (J) {
             function H() {
@@ -49,15 +49,11 @@
         }
     </script>
     <style>
-        .div_span{
-            position: relative;
-            padding: 5px;
-        }
         .detail-footer {
             position: fixed;
             width: 100%;
             height: 1rem;
-            bottom: -9px;
+            bottom: -10px;
             left: 0;
             right: 0;
             background: #eee;

@@ -194,7 +194,7 @@ public class TaoBaoApiTest {
         //req.setCat("16,18");
         req.setPageSize(5L);
         req.setPageNo(1L);
-        req.setQ("男装");
+        req.setQ("https://item.taobao.com/item.htm?id=555151544497");
         req.setSort("total_sales");
         req.setHasCoupon(true);
         req.setAdzoneId(272988181L);

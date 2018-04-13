@@ -931,7 +931,7 @@
                             "</span><span class='good-btn' style='color:#999'>销量"+item.volume+"</span></div>" +
                             "<div class='list-price buy'><span class='price-new fs12'>" +
                             "<span style='text-decoration: line-through;color: rgba(171, 171, 171, 1);'>￥"+item.zk_final_price+"</span> 券后"+(item.zk_final_price-couponAmt).toFixed(2)+"<i>元</i>" +
-                            "</span><span class='.buy .price-new' style='float: right;color: #FE4E4E;font-size: 12px;'>返"+((item.zk_final_price-couponAmt)*item.commission_rate/10000/2).toFixed(2)+"</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
+                            "</span><span class='.buy .price-new' style='float: right;color: #FE4E4E;font-size: 12px;'>返现金</span></div></a><div class='b-btndiv'><div class='btn-l'><div class='btn-wai'><div class='btn-nei'>" +
                             "<a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.auctionId+">领券</a></div></div></div><div class='btn-l'>" +
                             "<div class='btn-wai'><div class='btn-nei2'><a href="+domain+"/manage/tbkItemDetail.do?itemId="+item.num_iid+">详情</a></div>" +
                             "</div></div></div>"

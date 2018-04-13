@@ -434,7 +434,7 @@
                 </div>
                 <div id="jiage" style="display:none;">down</div>
                 <div id="onlyq" style="display:none;">0</div>
-                <div id="nbsite" style="display:none;">1</div>
+                <div id="nbsite" style="display:none;">0</div>
                 <div id="gotype" style="display:none">1</div>
                 <div class="sort-wrap clearfix" id="J_search_sort">
                     <a href="javascript:;" class="sort-item gotype" data-id="1" style="color:#F50">综合排序</a>
@@ -682,8 +682,7 @@
                             "<div class='item-line'><div class='line-group coupon-tag-wrap'><div class='coupon-tag'>券</div>" +
                             "<div class='coupon-price'>"+couponAmt+"元</div></div></div><div class='item-handle'>" +
                             "<img class='item-handle-img' src='../page/images/more.png'><div class='item-handle-text'>" +
-                            "<span style='font-size:0.24rem;color: #ff5500'>返 </span>" +
-                            "<span style='font-size:0.29rem;color: #ff5500'>"+((item.zk_final_price-couponAmt)*item.commission_rate/10000/2).toFixed(2)+"元</span></div></div></div></a>"
+                            "<span style='font-size:0.24rem;color: #ff5500'>返现金</span></div></div></div></a>"
                         document.getElementById("inData").appendChild(createLi)
                     });
                 }else{

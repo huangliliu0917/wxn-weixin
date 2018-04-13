@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -106,7 +107,7 @@ public class TbkSuperQueryManager {
             if("1".equals(superQuery.getGotype())){//综合排序
 
             }else if("2".equals(superQuery.getGotype())){//返金比率
-                req.setSort("tk_rate");
+                req.setSort("tk_rate_des");
             }else if("3".equals(superQuery.getGotype())){//30日销量
                 req.setSort("total_sales");
             }else if("4".equals(superQuery.getGotype())){//券后价
@@ -123,9 +124,9 @@ public class TbkSuperQueryManager {
             if("1".equals(superQuery.getGotype())){//综合排序
 
             }else if("2".equals(superQuery.getGotype())){//返金比率
-                req.setSort("tk_rate");
+                req.setSort("tk_rate_des");
             }else if("3".equals(superQuery.getGotype())){//30日销量
-                req.setSort("total_sales");
+                req.setSort("total_sales_des");
             }else if("4".equals(superQuery.getGotype())){//券后价
                 if("up".equals(superQuery.getJiage())){//价格降序
                     req.setSort("price_des");
@@ -136,6 +137,10 @@ public class TbkSuperQueryManager {
             }
         }
         TbkDgMaterialOptionalResponse rsp = client.execute(req);
+
+        if(rsp.getTotalResults() == 0){
+            return new ArrayList<TbkMaterialOptionalDO>();
+        }
 
         JSONObject jsonObject = JSONObject.fromObject(rsp.getBody());
         String tbkResp = jsonObject.get("tbk_dg_material_optional_response").toString();
